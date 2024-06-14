@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --verde-escuro: #57a8ae;
+    --verde-active: #327e83;
+    --verde-claro: #9dcccf;
+    --cinza: #e3e7e7;
+    --rosa: #edc7cf;
+    --preto: #1d1d1d;
+    --cinza-escuro: #757575;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: column;
+}
+
+nav{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: blue;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+.section-1{
+    background-color: var(--verde-claro);
+    height: 80vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+.section-1 h1{
+    font-size: 50px;
+    color: var(--preto);
+}
+
+.section-1_inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 90%;
+    height: 50vh;
+}
+
+.section-1_1, .section-1_2{
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.section-1_1 input, .section-1_2 input{
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 700px;
+    padding: 20px;
+    font-style: italic;
+    color: var(--cinza-escuro);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
+}
+
+.instituicao-check{
+    display: flex;
+    flex-direction: column;
+}
+
+.instituicao-check i{
+    font-size: 30px;
+    color: var(--verde-escuro);
+}
+
+.instituicao-check-1{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.instituicao-check-1 p{
+    font-size: 20px;
+}
+
+.section-1 button{
+    font-size: 30px;
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 400px;
+    color: white;
+    background-color: var(--verde-escuro);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
+}
+
+.section-1 button:hover{
+    background-color: #327e83;
+}
+
+.section-1 button:active{
+    transform: translateY(5px);
+}
+
+.link-login{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.link-login p{
+    color: var(--preto);
+}
+
+.link-login a{
+    text-decoration: none;
+    color: var(--verde-active);
+}
+
+.link-login a:hover{
+    text-decoration: underline;
+}
