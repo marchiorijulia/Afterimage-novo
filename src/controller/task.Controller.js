@@ -2,7 +2,7 @@ const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
 async function storeTask(request, response){
-    const params = Arrays(
+    const params = Array(
         request.body.nome,
         request.body.username,
         request.body.email,
@@ -32,6 +32,38 @@ async function storeTask(request, response){
     })
 }
 
+async function storePost(request, response){
+    const params = Array(
+        request.body.img,
+        request.body.titulo,
+        request.body.descricao,
+        request.body.ano
+    );
+
+    const query = "INSERT INTO posts(img, titulo, descricao, ano) VALUES(?,?,?,?)";
+
+    connection.query(query, params, (err, results) => {
+        if(results){
+            response
+            .status(201)
+            .json({
+                success: true,
+                message: "sucesso!",
+                data: results
+            })
+        }else{
+            response
+            .status(400)
+            .json({
+                success: false,
+                message: "oops!",
+                sql: err
+            })
+        }
+    })
+}
+
 module.exports = {
-    storeTask
+    storeTask,
+    storePost
 }
