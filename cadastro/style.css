@@ -24,6 +24,7 @@ body{
 nav{
     height: 10vh;
     width: 100%;
+<<<<<<< HEAD
     padding: 50px;
     display: flex;
     align-items: center;
@@ -34,10 +35,17 @@ nav{
 nav h1{
     color: var(--verde-claro);
     font-size: 40px;
+=======
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: blue;
+>>>>>>> fd3e9e72dcd8aa70484fb34c9b1e1e07f52ecdba
 }
 
 nav a{
     text-decoration: none;
+<<<<<<< HEAD
     font-size: 20px;
     color: white;
 }
@@ -93,6 +101,9 @@ nav a{
     gap: 10px;
     background-color: var(--verde-escuro);
     color: white;
+=======
+    color: black;
+>>>>>>> fd3e9e72dcd8aa70484fb34c9b1e1e07f52ecdba
 }
 
 .section-1{
