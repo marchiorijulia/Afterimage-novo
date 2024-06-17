@@ -74,6 +74,7 @@ nav a{
     background-color: white;
     padding-left: 20px;
     font-style: italic;
+    outline: 0;
 }
 
 #lupa-icon{
@@ -134,6 +135,7 @@ nav a{
     padding: 20px;
     font-style: italic;
     color: var(--cinza-escuro);
+    outline: 0;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
 }
 

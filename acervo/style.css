@@ -4,6 +4,13 @@ body{
     flex-wrap: wrap;
 }
 
+.posts-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .postagem{
     border: solid 1px black;
