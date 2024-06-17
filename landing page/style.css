@@ -19,7 +19,6 @@
     background-image: url(../Images/background.png);
     background-size: cover;
     background-repeat: no-repeat;
-<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,21 +130,3 @@ nav a{
     justify-content: center;
     gap: 15px;
 }
-=======
-    height: 100vh;
-}
-
-.section-1 nav{
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: blue;
-}
-
-.section-1 nav a{
-    text-decoration: none;
-    color: black;
-}
->>>>>>> fd3e9e72dcd8aa70484fb34c9b1e1e07f52ecdba
