@@ -5,11 +5,12 @@ const jwt = require('jsonwebtoken');
 
 
 async function storeLogin(request, response) {
-    const query = "SELECT * FROM users WHERE `email` = ?";
+    const query = "SELECT * FROM users WHERE email = ?";
     
     const params = Array(
         request.body.email
     );
+    
     connection.query(query, params, (err, results) => {
         try {            
             if (results.length > 0) {                
