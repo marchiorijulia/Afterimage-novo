@@ -33,5 +33,11 @@ create table tags(
     foreign key (post_id) references posts(id)
 );
 
+create table posts_simples(
+	img varchar(255),
+    titulo varchar(255),
+    descricao varchar(255),
+    ano varchar(255)
+);
 
 

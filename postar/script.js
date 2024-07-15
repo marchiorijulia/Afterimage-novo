@@ -16,7 +16,7 @@ button.onclick = async function(){
     let content = await response.json();
 
     if(content.success){
-        alert('Usuário cadastrado.')
+        alert('Postado com sucesso!')
     }else{
         alert('Ocorreu um erro');
     }

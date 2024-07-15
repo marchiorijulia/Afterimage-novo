@@ -79,7 +79,9 @@ nav a{
     background-color: white;
     padding-left: 20px;
     font-style: italic;
+    outline: 0;
 }
+
 
 #lupa-icon{
     font-size: 18px;
