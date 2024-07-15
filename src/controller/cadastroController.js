@@ -1,12 +1,13 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
+const bcrypt = require('bcrypt');
 
-async function storeTask(request, response){
+async function storeCadastro(request, response){
     const params = Array(
         request.body.nome,
         request.body.username,
         request.body.email,
-        request.body.senha
+        bcrypt.hashSync(request.body.senha, 10)
     );
 
     const query = "INSERT INTO users(nome, username, email, senha) VALUES(?,?,?,?)";
@@ -33,5 +34,5 @@ async function storeTask(request, response){
 }
 
 module.exports = {
-    storeTask
+    storeCadastro
 }
