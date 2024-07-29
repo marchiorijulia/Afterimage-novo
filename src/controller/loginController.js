@@ -38,7 +38,7 @@ async function storeLogin(request, response) {
         } catch (e) { 
             response.status(400).json({
                     succes: false,
-                    message: "Ocorreu um erro. Não foi possível deletar usuário!",
+                    message: "Ocorreu um erro.",
                     query: err,
                     sqlMessage: err
                 });

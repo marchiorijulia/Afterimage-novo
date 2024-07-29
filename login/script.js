@@ -14,7 +14,7 @@ button.onclick = async function(){
     let content = await response.json();
     console.log(content)
     if(content.success){
-        alert('Usuário logado.')
+        alert('Usuário logado.');
     }else{
         alert('Ocorreu um erro');
     }

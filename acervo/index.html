@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/684b166144.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <script defer src="script.js"></script>
     <title>Afterimage</title>
 </head>
 <body>
+    <nav>
+        <h1>Afterimage</h1>
+        <div class="searchbar">
+            <div class="searchbar-dropdown">
+                <p>Todos</p>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <input type="text" placeholder="Pesquise...">
+            <i id="lupa-icon" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="nav-links">
+            <a href="../postar/index.html">Postar</a>
+            <a href="../login/index.html">Login</a>
+            <a id="botao-cadastro" href="../cadastro/index.html">Cadastre-se</a>
+        </div>
+
+    </nav>
     <section class="posts-list">
         <div class="postagem">
+            <p class="img">[Imagem]</p>
             <h1>Título</h1>
-            <p>[Imagem]</p>
             <p>Descrição.............................................</p>
+            <i class="fa-solid fa-calendar-days"></i>
             <p>Ano</p>
         </div>
     </section>
