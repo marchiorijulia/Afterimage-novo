@@ -14,6 +14,11 @@
     --cinza-escuro: #757575;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 /* NAVBAR */
 
 nav{
@@ -91,14 +96,17 @@ nav a{
     color: white;
 }
 
-
-
-body{
+/* SECTION 1 */
+.pag-inicial{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    gap: 8px;
 }
 
+.pag-inicial i{
+    color: var(--verde-escuro);
+}
+
+/* POSTAGENS */
 .posts-list{
     width: 100%;
     padding: 70px;
@@ -113,39 +121,40 @@ body{
 .postagem{
     background-color: var(--cinza);
     border-radius: 10px;
-    width: 280px;
-    height: 400px;
+    width: 240px;
+    height: 380px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 22px;
     padding: 20px;
     font-size: 20px;
 }
 
 .img{
     background-color: #327e83;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     border-radius: 10px;
 }
 
 .postagem h1{
     text-align: left;
-    width: 250px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 22px;
 }
 
 .desc{
     text-align: left;
-    width: 250px;
+    width: 200px;
     font-style: italic;
 }
 
 .ano_div{
-    width: 250px;
+    width: 200px;
     display: flex;
     gap: 5px;
 }
