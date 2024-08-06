@@ -1,4 +1,39 @@
 let button = document.getElementById('submit');
+const eye_button = document.getElementById('eye-icon');
+const eye_button_confirm = document.getElementById('eye-icon-confirm');
+const password_field = document.getElementById('senha');
+const confirm_password = document.getElementById('confirmar-senha');
+
+
+eye_button.addEventListener('click', () => {
+    if (password_field.type === "password"){
+        password_field.type = 'text';
+        eye_button.classList.replace('fa-eye', 'fa-eye-slash');
+    }else{
+        password_field.type = 'password';
+        eye_button.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+});
+
+eye_button_confirm.addEventListener('click', () => {
+    if (confirm_password.type === "password"){
+        confirm_password.type = 'text';
+        eye_button_confirm.classList.replace('fa-eye', 'fa-eye-slash');
+    }else{
+        confirm_password.type = 'password';
+        eye_button_confirm.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+});
+
+var check = function() {
+    if (password_field.value == confirm_password.value) {
+      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').innerHTML = 'As senhas estão iguais.';
+    } else {
+      document.getElementById('message').style.color = 'red';
+      document.getElementById('message').innerHTML = 'As senhas não estão iguais.';
+    }
+  }
 
 button.onclick = async function(){
     let nome = document.getElementById('nome').value;

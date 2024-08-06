@@ -1,4 +1,16 @@
 let button = document.getElementById('submit');
+const eye_button = document.getElementById('eye-icon');
+const password_field = document.getElementById('senha');
+
+eye_button.addEventListener('click', () => {
+    if (password_field.type === "password"){
+        password_field.type = 'text';
+        eye_button.classList.replace('fa-eye', 'fa-eye-slash');
+    }else{
+        password_field.type = 'password';
+        eye_button.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+});
 
 button.onclick = async function(){    
     let email = document.getElementById('email').value;
@@ -19,3 +31,12 @@ button.onclick = async function(){
         alert('Ocorreu um erro');
     }
 }
+
+function toggle_password() {
+    var x = document.getElementById("senha");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }

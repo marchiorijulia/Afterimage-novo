@@ -148,12 +148,20 @@ nav a{
     color: var(--preto);
 }
 
+.input-icon .fa-regular{
+    position: absolute;
+    font-size: 20px;
+    color: var(--verde-escuro);
+    padding: 20px;
+    min-width: 40px;
+}
+
 .section-1_2 input{
     border: none;
     border-radius: 30px;
     height: 60px;
     width: 400px;
-    padding: 20px;
+    padding-left: 55px;
     font-style: italic;
     color: var(--cinza-escuro);
     outline: 0;
@@ -177,6 +185,10 @@ nav a{
 
 .section-1 button:active{
     transform: translateY(5px);
+}
+
+#toggle_password{
+    text-align: left;
 }
 
 .link-cadastro{
