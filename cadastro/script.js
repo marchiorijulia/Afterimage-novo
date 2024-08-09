@@ -26,7 +26,7 @@ eye_button_confirm.addEventListener('click', () => {
 });
 
 var check = function() {
-    if (password_field.value == confirm_password.value) {
+    if (password_field.value == confirm_password.value && password_field.value !== "") {
       document.getElementById('message').style.color = 'green';
       document.getElementById('message').innerHTML = 'As senhas estão iguais.';
     } else {
