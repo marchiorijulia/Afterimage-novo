@@ -27,10 +27,12 @@ eye_button_confirm.addEventListener('click', () => {
 
 var check = function() {
     if (password_field.value == confirm_password.value && password_field.value !== "") {
-      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').style.color = 'var(--verde)';
       document.getElementById('message').innerHTML = 'As senhas estão iguais.';
-    } else {
-      document.getElementById('message').style.color = 'red';
+    }else if(password_field.value === ""){
+        document.getElementById('message').innerHTML = '';
+    }else{
+      document.getElementById('message').style.color = 'var(--vermelho)';
       document.getElementById('message').innerHTML = 'As senhas não estão iguais.';
     }
   }
