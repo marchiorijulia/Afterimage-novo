@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --verde-escuro: #57a8ae;
     --verde-active: #327e83;
     --verde-claro: #9dcccf;
@@ -14,89 +14,113 @@
     --cinza-escuro: #757575;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     gap: 50px;
     flex-direction: column;
+    font-family: Lora;
 }
 
-nav{
-    height: 10vh;
+
+nav {
+    height: 14vh;
     width: 100%;
-    padding: 50px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.377);
+    background-color: var(--verde-claro);
 }
 
-nav h1{
-    color: var(--verde-claro);
-    font-size: 40px;
-}
-
-nav a{
+#logo {
+    color: var(--verde-escuro);
+    font-size: 35px;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
     color: white;
 }
 
-.nav-links{
-    display: flex;
-    align-items: center;
-    gap: 30px;
+nav a:hover {
+    text-decoration: underline;
+    color: var(--verde-escuro);
 }
 
-#botao-cadastro{
-    width: 200px;
-    height: 40px;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+#botao-cadastro {
+    width: 10vw;
+    height: 7vh;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--verde-claro);
+    background-color: var(--verde-escuro);
 }
 
-.searchbar{
+#botao-cadastro:hover {
+    color: white;
+    text-decoration: none;
+    background-color: var(--verde-active);
+}
+
+.searchbar {
     display: flex;
     align-items: center;
-    width: 750px;
-    height: 40px;
+    width: 50vw;
+    height: 7vh;
     border-radius: 10px;
-    background-color: white
+    background-color: white;
+    position: relative;
 }
 
-.searchbar input{
-    width: 600px;
-    height: 40px;
+.searchbar input {
+    width: 39vw;
+    height: 7vh;
     border: none;
     background-color: white;
     padding-left: 20px;
     font-style: italic;
     outline: 0;
+    font-family: Lora;
 }
 
-#lupa-icon{
+#lupa-icon {
     font-size: 18px;
-    width: 50px;
+    width: 4vw;
+    position: absolute;
+    right: 0;
     color: var(--preto);
 }
 
-.searchbar-dropdown{
-    width: 100px;
-    height: 40px;
+.searchbar-dropdown {
+    width: 8vw;
+    height: 7vh;
     display: flex;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     background-color: var(--verde-escuro);
     color: white;
 }
 
-.section-1{
+#dropdown-chevron {
+    color: white;
+    font-size: 12px;
+}
+
+.section-1 {
     background-color: var(--verde-claro);
     height: 80vh;
     width: 90%;
@@ -107,7 +131,7 @@ nav a{
     border-radius: 30px;
 }
 
-.section-1_1{
+.section-1_1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,15 +146,15 @@ nav a{
     color: white;
 }
 
-.section-1_1 h1{
+.section-1_1 h1 {
     font-size: 90px;
 }
 
-.section-1_1 p{
+.section-1_1 p {
     font-size: 40px;
 }
 
-.section-1_2{
+.section-1_2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,12 +167,12 @@ nav a{
     border-bottom-right-radius: 30px;
 }
 
-.section-1_2 h1{
+.section-1_2 h1 {
     font-size: 70px;
     color: var(--preto);
 }
 
-.input-icon .fa-regular{
+.input-icon .fa-regular {
     position: absolute;
     font-size: 20px;
     color: var(--verde-escuro);
@@ -156,7 +180,7 @@ nav a{
     min-width: 40px;
 }
 
-.section-1_2 input{
+.section-1_2 input {
     border: none;
     border-radius: 30px;
     height: 60px;
@@ -168,7 +192,7 @@ nav a{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
 }
 
-.section-1 button{
+.section-1 button {
     font-size: 30px;
     border: none;
     border-radius: 30px;
@@ -179,36 +203,36 @@ nav a{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
 }
 
-.section-1 button:hover{
+.section-1 button:hover {
     background-color: #327e83;
 }
 
-.section-1 button:active{
+.section-1 button:active {
     transform: translateY(5px);
 }
 
-#toggle_password{
+#toggle_password {
     text-align: left;
 }
 
-.link-cadastro{
+.link-cadastro {
     font-size: 20px;
 }
 
-.link-cadastro p{
+.link-cadastro p {
     color: var(--preto);
 }
 
-.link-cadastro a{
+.link-cadastro a {
     text-decoration: none;
     color: var(--verde-active);
 }
 
-.link-cadastro a:hover{
+.link-cadastro a:hover {
     text-decoration: underline;
 }
 
-#esqueceu-senha{
+#esqueceu-senha {
     text-decoration: none;
     color: var(--preto);
     width: 400px;
