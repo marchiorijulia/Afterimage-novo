@@ -178,6 +178,10 @@ nav a:hover{
     min-width: 40px;
 }
 
+#eye-icon, #eye-icon-confirm{
+    cursor: pointer;
+}
+
 #message{
     font-size: 14px;
     position: absolute;
