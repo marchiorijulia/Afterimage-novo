@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --verde-escuro: #57a8ae;
+    --verde-active: #327e83;
+    --verde-claro: #9dcccf;
+    --cinza: #e3e7e7;
+    --rosa: #edc7cf;
+    --preto: #1d1d1d;
+    --cinza-escuro: #757575;
+}
+
+/* NAVBAR E SECTION 1 */
+.section-1{
+    background-image: url(../Images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 300px;
+    height: 100vh;
+}
+
+nav{
+    height: 10vh;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.377);
+}
+
+nav h1{
+    color: var(--verde-claro);
+    font-size: 40px;
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#botao-cadastro{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--verde-claro);
+}
+
+.searchbar{
+    display: flex;
+    align-items: center;
+    width: 750px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white
+}
+
+.searchbar input{
+    width: 600px;
+    height: 40px;
+    border: none;
+    background-color: white;
+    padding-left: 20px;
+    font-style: italic;
+    outline: 0;
+}
+
+
+#lupa-icon{
+    font-size: 18px;
+    width: 50px;
+    color: var(--preto);
+}
+
+.searchbar-dropdown{
+    width: 100px;
+    height: 40px;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--verde-escuro);
+    color: white;
+}
+
+.section-1-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.section-1-text h1{
+    font-size: 96px;
+}
+
+.section-1-text p{
+    font-size: 32px;
+    text-align: center;
+}
+
+.section-1-text a{
+    font-size: 32px;
+    text-decoration: none;
+    color: white;
+    background-color: var(--verde-claro);
+    height: 45px;
+    width: 300px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}

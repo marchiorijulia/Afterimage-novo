@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/684b166144.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <script defer src="script.js"></script>
+    <title>Afterimage</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../landing page/index.html" id="logo">Afterimage</a>
+        <div class="searchbar">
+            <div class="searchbar-dropdown">
+                <p>Todos</p>
+                <i class="fa-solid fa-chevron-down" id="dropdown-chevron"></i>
+            </div>
+            <input type="text" placeholder="Pesquise...">
+            <i id="lupa-icon" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="nav-links">
+            <a href="../postar/index.html">Postar</a>
+            <a href="../login/index.html">Login</a>
+            <a id="botao-cadastro" href="../cadastro/index.html">Cadastre-se</a>
+        </div>
+
+    </nav>
+    <section class="section-1">
+        <h1>CADASTRO</h1>
+        <div class="section-1_inputs">
+            <div class="section-1_1">
+                <div class="input-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="nome" placeholder="Nome" required>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" placeholder="Usuário" required>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            <div class="section-1_2">
+                <div class="input-icon">
+                    <i class="fa-regular fa-eye" id="eye-icon"></i>
+                    <input type="password" id="senha" placeholder="Senha" onkeyup='check();' required>
+                </div>
+                <div id="password-message">
+                    <div class="input-icon">
+                        <i class="fa-regular fa-eye" id="eye-icon-confirm"></i>
+                        <input type="password" id="confirmar-senha" placeholder="Confirmar senha" onkeyup='check();'
+                            required>
+                    </div>
+                    <p id="message"></p>
+                </div>
+                <div class="checkbox-estilizado">
+                    <div class="checkbox-wrapper-46">
+                        <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                        <label class="cbx" for="cbx-46"><span>
+                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg></span><span>Instituição</span>
+                        </label>
+                    </div>
+                    <p class="checkbox-text">
+                        As contas marcadas como “Instituição” terão um selo em seu perfil,<br> indicando serem parte
+                        de
+                        uma
+                        organização existente.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button id="submit">CONTINUAR</button>
+        <p class="link-login">Já possui conta? <a href="../login/index.html">Faça login.</a></p>
+    </section>
+</body>
+
+</html>
