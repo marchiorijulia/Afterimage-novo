@@ -21,7 +21,7 @@ create table posts(
     ano int, 
     decada int,
     seculo int,
-    sensitive_content boolean not null
+    sensitive_content boolean
 );
 
 create table tags(
@@ -30,3 +30,4 @@ create table tags(
     post_id int,
     foreign key (post_id) references posts(id)
 );
+
