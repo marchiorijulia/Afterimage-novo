@@ -1,40 +1,75 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
+
+const fs = require('fs');
+const path = require('path');
+
+const uploadPath = path.join(__dirname, "..", "uploads");
+
+if(!fs.existsSync(uploadPath)){
+    fs.mkdirSync(uploadPath);
+}
+
 async function storePost(request, response){
-    const params = Array(
-        request.body.img,
-        request.body.titulo,
-        request.body.descricao,
-        request.body.ano,
-        request.body.userId
-    );
 
-    const query = "INSERT INTO posts_simples(img, titulo, descricao, ano, user_id) VALUES(?,?,?,?,?)";
+    if(!request.files){
+        return response.status(400).json({
+            success: false,
+            message: "Você não enviou o arquivo de foto."
+        });
+    }
 
-    connection.query(query, params, (err, results) => {
-        if(results){
-            response
-            .status(201)
-            .json({
-                success: true,
-                message: "sucesso!",
-                data: results
-            })
-        }else{
-            response
-            .status(400)
-            .json({
+    const img = request.files.img;
+    const imgNome = Date.now() + path.extname(img.name);
+
+    img.mv(path.join(uploadPath, imgNome), (erro) => {
+        if(erro){
+            return response.status(400).json({
                 success: false,
-                message: "oops!",
-                sql: err
+                message: "Erro ao mover o arquivo."
             })
         }
-    })
+
+        const params = Array(
+            request.body.userId,
+            request.body.titulo,
+            request.body.descricao,
+            imgNome,
+            request.body.ano,
+            request.body.decada,
+            request.body.seculo,
+            request.body.sensitive_content
+            
+        )
+
+        const query = "INSERT INTO posts(user_id, titulo, descricao, img, ano, decada, seculo, sensitive_content) VALUES(?,?,?,?,?,?,?,?)";
+
+        connection.query(query, params, (err, results) => {
+            if(results){
+                response
+                .status(201)
+                .json({
+                    success: true,
+                    message: "sucesso!",
+                    data: results
+                })
+            }else{
+                response
+                .status(400)
+                .json({
+                    success: false,
+                    message: "oops!",
+                    sql: err
+                })
+            }
+        })
+
+    });
 }
 
 async function getPost(request, response){
-    const query = "SELECT * FROM posts_simples";
+    const query = "SELECT * FROM posts";
 
     connection.query(query, (err, results) => {
         if(results){

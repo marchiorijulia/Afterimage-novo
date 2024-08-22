@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.className = 'postagem';
 
             const img = document.createElement('img');
-            img.src = post.img;
+            img.src = `http://localhost:3000/uploads/${post.img}`;
             img.className = 'img';
 
             const titulo = document.createElement('h1');

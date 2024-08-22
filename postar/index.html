@@ -11,8 +11,11 @@
 <body>
     <h1>Postar imagem</h1>
     <form action="" enctype="multipart/form-data" id="formulario">
+
         <input type="text" id="titulo" placeholder="Título" name="titulo">
+
         <input type="text" id="descricao" placeholder="Descrição" name="descricao">
+
         <input type="file" id="img" placeholder="Imagem" name="img">
 
         <select name="ano" id="year">
@@ -21,13 +24,13 @@
         <select name="decada" id="decade">
             <option value="">Desconhecido</option>
         </select>
-        <select name="século" id="century">
+        <select name="seculo" id="century">
             <option value="">Desconhecido</option>
             <option value="">XX</option>
             <option value="">XIX</option>
         </select>
 
-        <input type="checkbox" id="sensitive" name="sensitive" value="sensitive">
+        <input type="checkbox" id="sensitive" name="sensitive_content" value="sensitive">
         <label for="sensitive">Conteúdo sensível</label>
 
         <button id="submit">Postar</button>
