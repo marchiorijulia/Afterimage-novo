@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="script.js"></script>
     <title>Afterimage</title>
 </head>
+
 <body>
     <h1>Postar imagem</h1>
-    <input type="text" id="img" placeholder="Imagem">
-    <input type="text" id="titulo" placeholder="Título">
-    <input type="text" id="descricao" placeholder="Descrição">
-    <input type="text" id="ano" placeholder="Ano">
-    <button id="submit">Postar</button>
+    <form action="" enctype="multipart/form-data" id="formulario">
+        <input type="text" id="titulo" placeholder="Título" name="titulo">
+        <input type="text" id="descricao" placeholder="Descrição" name="descricao">
+        <input type="file" id="img" placeholder="Imagem" name="img">
+
+        <select name="ano" id="year">
+            <option value="">Desconhecido</option>
+        </select>
+        <select name="decada" id="decade">
+            <option value="">Desconhecido</option>
+        </select>
+        <select name="século" id="century">
+            <option value="">Desconhecido</option>
+            <option value="">XX</option>
+            <option value="">XIX</option>
+        </select>
+
+        <input type="checkbox" id="sensitive" name="sensitive" value="sensitive">
+        <label for="sensitive">Conteúdo sensível</label>
+
+        <button id="submit">Postar</button>
+    </form>
 </body>
+
 </html>

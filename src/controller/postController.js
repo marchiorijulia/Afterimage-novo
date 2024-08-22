@@ -6,10 +6,11 @@ async function storePost(request, response){
         request.body.img,
         request.body.titulo,
         request.body.descricao,
-        request.body.ano
+        request.body.ano,
+        request.body.userId
     );
 
-    const query = "INSERT INTO posts_simples(img, titulo, descricao, ano) VALUES(?,?,?,?)";
+    const query = "INSERT INTO posts_simples(img, titulo, descricao, ano, user_id) VALUES(?,?,?,?,?)";
 
     connection.query(query, params, (err, results) => {
         if(results){

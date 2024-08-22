@@ -11,12 +11,10 @@ async function storeLogin(request, response) {
         request.body.email
     );
     
-    console.log(params)
     connection.query(query, params, (err, results) => {
         try {            
             if (results.length > 0) {                
                 bcrypt.compare(request.body.senha, results[0].senha, (err, result) => {
-                    console.log(err)
                     if (err) {                        
                         return response.status(401).send({
                             msg: 'Email ou senha estão incorretos!'

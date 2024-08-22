@@ -18,8 +18,6 @@ create table posts(
     titulo varchar(255) not null,
     descricao varchar(255),
     data_publicao timestamp,
-    dia int,
-    mes int,
     ano int, 
     decada int,
     seculo int,
@@ -32,12 +30,3 @@ create table tags(
     post_id int,
     foreign key (post_id) references posts(id)
 );
-
-create table posts_simples(
-	img varchar(255),
-    titulo varchar(255),
-    descricao varchar(255),
-    ano varchar(255)
-);
-
-
