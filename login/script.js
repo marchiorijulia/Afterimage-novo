@@ -23,13 +23,12 @@ button.onclick = async function(){
         headers: {'Content-type': "application/json;charset=UTF-8"},
         body: JSON.stringify(data)
     });
-
-    console.log("aqui2")
-
+    
     let content = await response.json();
     console.log(content)
     if(content.success){
         alert('Usuário logado.');
+        window.location.href = `../perfil/index.html?id=${params}`;
     }else{
         alert(content.msg);
     }

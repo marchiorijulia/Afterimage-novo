@@ -59,6 +59,31 @@ async function storeLogin(request, response) {
     });
 }
 
+async function getUserById(request, response){
+    const params = 
+    Array(request.params.id);
+
+    const query = "SELECT * FROM users where id = ?"
+
+    connection.query(query, params, (err, results) => {
+        if(results>0){
+            response.status(200).json({
+                success: true,
+                data: results[0],
+                message: "Sucesso!"
+            })
+        }else{
+            response.status(400).json({
+                success: false,
+                message: "Erro!",
+                sql: err
+            })
+        }
+    })
+
+}
+
 module.exports = {
-    storeLogin
+    storeLogin,
+    getUserById
 }
