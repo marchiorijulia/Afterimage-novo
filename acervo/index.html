@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,14 @@
     <script defer src="script.js"></script>
     <title>Afterimage</title>
 </head>
+
 <body>
     <nav>
-        <h1>Afterimage</h1>
+        <a href="../landing page/index.html" id="logo">Afterimage</a>
         <div class="searchbar">
             <div class="searchbar-dropdown">
                 <p>Todos</p>
-                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-chevron-down" id="dropdown-chevron"></i>
             </div>
             <input type="text" placeholder="Pesquise...">
             <i id="lupa-icon" class="fa-solid fa-magnifying-glass"></i>
@@ -31,16 +33,47 @@
         </div>
 
     </nav>
-    <section>
+    <section class="section-1">
         <div class="pag-inicial">
             <i class="fa-solid fa-house-chimney"></i>
             <p>Voltar à página inicial</p>
         </div>
-        <p>Explore um acervo com mais de 1.500 imagens</p>
-        <i class="fa-solid fa-filter"></i>
-        <p>Filtrar</p>
+        <h2>Acervo com 0 filtros</h2>
+        <div class="filtros">
+            <i class="fa-solid fa-filter"></i>
+            <p>Filtrar</p>
+        </div>
+
     </section>
     <section class="posts-list">
+        <div class="postagem">
+            <img src="../Images/placeholder.png" alt="" class="img">
+            <h1>Título</h1>
+            <p class="desc">@username</p>
+            <div class="ano-div">
+                <i class="fa-regular fa-calendar-days"></i>
+                <p>1940s</p>
+            </div>
+        </div>
+        <div class="postagem">
+            <img src="../Images/placeholder2.png" alt="" class="img">
+            <h1>Título</h1>
+            <p class="desc">@username</p>
+            <div class="ano-div">
+                <i class="fa-regular fa-calendar-days"></i>
+                <p>1938</p>
+            </div>
+        </div>
+        <div class="postagem">
+            <img src="../Images/placeholder3.png" alt="" class="img">
+            <h1>Título</h1>
+            <p class="desc">@username</p>
+            <div class="ano-div">
+                <i class="fa-regular fa-calendar-days"></i>
+                <p>1910s</p>
+            </div>
+        </div>
     </section>
 </body>
+
 </html>

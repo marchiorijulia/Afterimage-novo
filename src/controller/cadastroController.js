@@ -7,10 +7,11 @@ async function storeCadastro(request, response){
         request.body.nome,
         request.body.username,
         request.body.email,
-        bcrypt.hashSync(request.body.senha, 10)
+        bcrypt.hashSync(request.body.senha, 10),
+        request.body.instituicao
     );
 
-    const query = "INSERT INTO users(nome, username, email, senha) VALUES(?,?,?,?)";
+    const query = "INSERT INTO users(nome, username, email, senha, instituicao) VALUES(?,?,?,?,?)";
 
     connection.query(query, params, (err, results) => {
         if(results){

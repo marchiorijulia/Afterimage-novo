@@ -1,7 +1,6 @@
 let button = document.getElementById('submit');
 let year = document.getElementById('year');
 let decade = document.getElementById('decade');
-let century = document.getElementById('century');
 
 for (let i = 1822; i <= 1999; i++) {
     const opt = document.createElement('option');
@@ -11,10 +10,12 @@ for (let i = 1822; i <= 1999; i++) {
 }
 
 for (let i = 1820; i <= 1990; i++) {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.innerHTML = i;
-    decade.appendChild(opt);
+    if (i % 10 == 0) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        decade.appendChild(opt);
+    }
 }
 
 button.onclick = async function () {

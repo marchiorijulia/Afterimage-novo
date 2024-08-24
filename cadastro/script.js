@@ -42,7 +42,8 @@ button.onclick = async function(){
     let username = document.getElementById('username').value;
     let email = document.getElementById('email').value;
     let senha = document.getElementById('senha').value;
-    let data = {nome,username,email,senha}
+    let instituicao = document.getElementById('cbx-46').checked;
+    let data = {nome,username,email,senha,instituicao}
 
     const response = await fetch('http://localhost:3000/api/store/cadastro', {
         method: 'POST',
@@ -54,6 +55,7 @@ button.onclick = async function(){
 
     if(content.success){
         alert('Usuário cadastrado.')
+        window.open(_self, "../login/index.html");
     }else{
         alert('Ocorreu um erro');
     }

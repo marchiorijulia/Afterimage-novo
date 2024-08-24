@@ -7,7 +7,7 @@ create table users(
     nome varchar(255) not null,
     email varchar(255) unique not null,
     senha varchar(255) not null,
-    instituicao boolean
+    instituicao boolean not null
 );
 
 create table posts(
@@ -21,7 +21,8 @@ create table posts(
     ano int, 
     decada int,
     seculo int,
-    sensitive_content boolean
+    pais varchar(255),
+    sensitive_content boolean not null
 );
 
 create table tags(
@@ -30,4 +31,7 @@ create table tags(
     post_id int,
     foreign key (post_id) references posts(id)
 );
+
+select * from users;
+
 
