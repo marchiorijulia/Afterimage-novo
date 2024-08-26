@@ -20,7 +20,11 @@ for (let i = 1820; i <= 1990; i++) {
 
 button.onclick = async function () {
     let form = document.getElementById('formulario');
-    let dadosForm = new FormData(form); //cria agrupado de dados
+    let dadosForm = new FormData(form); 
+    let usuario = JSON.parse(localStorage.getItem('user'));
+
+    dadosForm.append('userId', usuario.id)
+    //cria agrupado de dados
 
     const response = await fetch('http://localhost:3000/api/store/post', {
         method: 'POST',

@@ -39,7 +39,7 @@ async function storePost(request, response){
             request.body.ano,
             request.body.decada,
             request.body.seculo,
-            request.body.sensitive_content
+            request.body.sensitive_content == 'true' ? true : false
             
         )
 
@@ -55,6 +55,7 @@ async function storePost(request, response){
                     data: results
                 })
             }else{
+                console.log(err)
                 response
                 .status(400)
                 .json({
@@ -69,7 +70,7 @@ async function storePost(request, response){
 }
 
 async function getPost(request, response){
-    const query = "SELECT * FROM posts";
+    const query = "SELECT * FROM posts, users where users.id = posts.user_id";
 
     connection.query(query, (err, results) => {
         if(results){

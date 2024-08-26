@@ -28,6 +28,7 @@ button.onclick = async function(){
     console.log(content)
     if(content.success){
         alert('Usuário logado.');
+        localStorage.setItem('user', JSON.stringify(content.data))
         window.location.href = `../perfil/index.html?id=${params}`;
     }else{
         alert(content.msg);

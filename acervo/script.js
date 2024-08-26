@@ -17,22 +17,33 @@ document.addEventListener('DOMContentLoaded', async () => {
             titulo.textContent = post.titulo;
             titulo.className = '.postagem h1';
             
-            const descricao = document.createElement('p');
-            descricao.textContent = post.descricao;
-            descricao.className = 'desc';
+            const username = document.createElement('p');
+            username.textContent = "@" + post.username;
+            username.className = 'username';
 
             const ano_div = document.createElement('div');
             ano_div.className = 'ano_div';
 
             const ano = document.createElement('p');
             ano.textContent = post.ano;
+            if (ano===0o0){
+                ano = post.decada;
+            }else if (ano===0o0 && ano==post.decada){
+                ano =  post.seculo;
+            }else if(ano==post.decada && ano===0o0){
+                ano = "Desconhecido"
+            }else if(ano==post.seculo && ano==19){
+                ano = 'Século XIX'
+            }else if(ano==post.seculo && ano==20){
+                ano = 'Século XX'
+            }
 
             const calendario = document.createElement('i');
-            calendario.className = 'fa-solid fa-calendar-days';
+            calendario.className = 'fa-regular fa-calendar-days';
 
             card.appendChild(img);
             card.appendChild(titulo);
-            card.appendChild(descricao);
+            card.appendChild(username);
             card.appendChild(ano_div);
             ano_div.appendChild(calendario);
             ano_div.appendChild(ano);

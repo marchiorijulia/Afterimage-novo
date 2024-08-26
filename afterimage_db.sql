@@ -32,6 +32,6 @@ create table tags(
     foreign key (post_id) references posts(id)
 );
 
-select * from users;
+select * from posts;
 
 
