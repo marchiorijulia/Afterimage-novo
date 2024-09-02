@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             username.className = 'username';
 
             const ano_div = document.createElement('div');
-            ano_div.className = 'ano_div';
+            ano_div.className = 'ano-div';
 
             const ano = document.createElement('p');
             ano.textContent = post.ano;

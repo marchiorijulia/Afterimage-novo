@@ -11,7 +11,7 @@
     --cinza: #e3e7e7;
     --rosa: #edc7cf;
     --preto: #1d1d1d;
-    --cinza-escuro: #757575;
+    --cinza-escuro: #a1a1a1;
 }
 
 body{
@@ -134,6 +134,8 @@ nav a:hover{
 .pag-inicial{
     display: flex;
     gap: 8px;
+    text-decoration: none;
+    color: var(--preto);
 }
 
 .filtros{
@@ -160,23 +162,30 @@ nav a:hover{
 }
 
 .postagem{
-    background-color: var(--cinza);
+    /* background-color: var(--cinza); */
+    border: 1px solid var(--cinza);
     border-radius: 10px;
-    width: 280px;
-    height: 360px;
+    box-shadow: 0px 2px 5px #888888;
+    width: 480px;
+    height: 460px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 22px;
-    padding: 20px;
-    font-size: 20px;
+    gap: 18px;
+    padding: 22px;
+    font-size: 18px;
+}
+
+.postagem:hover{
+    transform: translateY(-8px);
 }
 
 .img{
-    background-color: var(--cinza-escuro);
-    height: 200px;
-    width: 250px;
+    background-color: var(--cinza);
+    height: 300px;
+    width: 450px;
     border-radius: 10px;
+    object-fit: contain;
 }
 
 .postagem h1{
@@ -185,7 +194,7 @@ nav a:hover{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .username{
