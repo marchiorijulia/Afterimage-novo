@@ -25,6 +25,12 @@ create table posts(
     sensitive_content boolean not null
 );
 
+ALTER TABLE
+   posts
+CHANGE
+   data_publicao
+   data_publicao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
 create table tags(
 	id int auto_increment primary key,
     tag_text varchar(255) unique not null,
@@ -34,4 +40,6 @@ create table tags(
 
 select * from posts;
 
+
+SELECT * FROM posts, users where users.id = posts.user_id
 
