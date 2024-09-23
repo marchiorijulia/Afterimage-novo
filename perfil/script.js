@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const perfilId = urlParams.get("id")
 
     if (perfilId){
-        fetch(`http://localhost:3000/api/get/login`)
+        fetch(`http://localhost:3000/api/get/users/perfil/${perfilId}`)
         .then(response => response.json())
         .then(data => {
-            if (data.sucess){
+            if (data.success){
                 const perfilMain = document.getElementById('main')
                 perfilMain.innerHTML =
                 `

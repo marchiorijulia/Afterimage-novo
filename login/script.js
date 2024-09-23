@@ -29,14 +29,14 @@ button.onclick = async function(){
     if(content.success){
         alert('Usuário logado.');
         localStorage.setItem('user', JSON.stringify(content.data))
-        window.location.href = `../perfil/index.html?id=${params}`;
+        window.location.href = `../perfil/index.html?id=${content.data.id}`;
     }else{
         alert(content.msg);
     }
 }
 
 function toggle_password() {
-    var x = document.getElementById("senha");
+    const x = document.getElementById("senha");
     if (x.type === "password") {
       x.type = "text";
     } else {

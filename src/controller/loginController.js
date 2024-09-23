@@ -60,13 +60,12 @@ async function storeLogin(request, response) {
 }
 
 async function getUserById(request, response){
-    const params = 
-    Array(request.params.id);
+    const params = Array(request.params.id);
 
     const query = "SELECT * FROM users where id = ?"
 
     connection.query(query, params, (err, results) => {
-        if(results>0){
+        if(results.length>0){
             response.status(200).json({
                 success: true,
                 data: results[0],
