@@ -9,10 +9,11 @@
     <script src="https://kit.fontawesome.com/684b166144.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="simple-tag-input.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
-    <script defer src="script.js"></script>
     <title>Afterimage</title>
 </head>
 
@@ -329,8 +330,35 @@
                 <input type="checkbox" id="sensitive" name="sensitive_content" value="true">
             </div>
         </div>
+        <div>
+            <ul id="tagsList2"></ul>
+            <input type="text" class="form-control" id="tagsInput2" spellcheck="false" />
+        </div>
     </form>
     <button id="submit">Postar</button>
+
+    <script src="script.js"></script>
+    <script src="simple-tag-input.js"></script>
+    <script>
+        let options = {
+            inputEl: "tagsInput2",
+            listEl: "tagsList2",
+            autocompleteSearchList: [
+                "Afganistan",
+                "Bangladesh",
+                "China",
+                "India",
+                "Pakistan",
+                "Sri Lanka",
+                "United States",
+                "United Kingdom",
+                "Vietnam",
+                "Zimbabwe"
+            ]
+        };
+        var tagsInputWithSearch = new simpleTagsInput(options);
+        tagsInput.getTags();
+    </script>
 </body>
 
 </html>

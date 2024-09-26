@@ -39,3 +39,4 @@ button.onclick = async function () {
         alert('Ocorreu um erro');
     }
 }
+
