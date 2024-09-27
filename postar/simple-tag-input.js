@@ -135,11 +135,16 @@ function simpleTagsInputAddTag (e) {
 
     function addTag (e) {
         /* Add tag / show auto complete search result -> from input element: `this.input` */
-        let SPACE = " ";
+        
+        // let SPACE = " ";
         let ENTER = "Enter";
-        if(e.key == SPACE || e.key == ENTER) {
+
+        // if(e.key == SPACE || e.key == ENTER)
+        if(e.key == ENTER) {
             // isert new tag
-            let tag = e.target.value.replace(/\s+/g, '');
+
+            // let tag = e.target.value.replace(/\s+/g, '');
+            let tag = e.target.value;
             if( tag.length > 1 && !this.tags.includes(tag) ){
                 this.tags.push(tag);
                 createTag.call(this);
@@ -160,7 +165,7 @@ function simpleTagsInputAddTag (e) {
         /* Handles auto complete search */
         let q = e.target.value;
         let results = this.searchItems.filter(item => item.toLowerCase().indexOf(q.toLowerCase()) != -1)
-        let _html = "<p style='border-bottom: 1px solid lightgrey; margin-bottom: 0px; font-weight: bold; padding: 5px; font-style: italic '>Search Result:</p>";
+        let _html = "<p style='border-bottom: 1px solid lightgrey; margin-bottom: 0px; font-weight: bold; padding: 5px; font-style: italic '>Tags similares:</p>";
         results.forEach(item => {
             _html += `<li data-value='${item}' data-target='${this.bridgeID}' onclick="simpleTagsInputAddTag(this)">${item}</li>`;
         });

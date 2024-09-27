@@ -329,11 +329,13 @@
                 <label for="sensitive">Conteúdo sensível</label>
                 <input type="checkbox" id="sensitive" name="sensitive_content" value="true">
             </div>
-        </div>
         <div>
             <ul id="tagsList2"></ul>
-            <input type="text" class="form-control" id="tagsInput2" spellcheck="false" />
+            <label for="tagsInput2">Tags</label>
+            <input type="text" class="form-control" id="tagsInput2" spellcheck="false" maxlength="25"/>
         </div>
+        </div>
+        
     </form>
     <button id="submit">Postar</button>
 
@@ -353,7 +355,8 @@
                 "United States",
                 "United Kingdom",
                 "Vietnam",
-                "Zimbabwe"
+                "Zimbabwe",
+                "Lorem ipsum dolor sit ame"
             ]
         };
         var tagsInputWithSearch = new simpleTagsInput(options);
