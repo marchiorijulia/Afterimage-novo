@@ -69,6 +69,34 @@ async function storePost(request, response){
     });
 }
 
+async function storeTags(request, response){
+    const params = Array(
+        request.body.
+    );
+
+    const query = "INSERT INTO tags(tag_text, post_id) VALUES(?,?)";
+
+    connection.query(query, params, (err, results) => {
+        if(results){
+            response
+            .status(201)
+            .json({
+                success: true,
+                message: "sucesso!",
+                data: results
+            })
+        }else{
+            response
+            .status(400)
+            .json({
+                success: false,
+                message: "oops!",
+                sql: err
+            })
+        }
+    })
+}
+
 async function getPost(request, response){
     const query = "SELECT * FROM posts, users where users.id = posts.user_id";
 
@@ -95,5 +123,6 @@ async function getPost(request, response){
 
 module.exports = {
     storePost,
-    getPost
+    getPost,
+    storeTags
 };
