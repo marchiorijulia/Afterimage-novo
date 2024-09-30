@@ -40,3 +40,35 @@ button.onclick = async function () {
     }
 }
 
+
+
+window.addEventListener("load", async () => {    
+    const response = await fetch('http://localhost:3000/api/tags/list', {
+        method: 'GET',
+        headers: {
+            "Content-Type":"application/json"
+        }
+    });
+
+    let content = await response.json();
+
+
+    if(content.success) {
+        let tags = content.data;
+        let tags_array = [];
+        
+    
+        tags.forEach(tag => {
+            tags_array.push(tag.tag_text)
+        });
+    
+        let options = {
+            inputEl: "tagsInput2",
+            listEl: "tagsList2",
+            autocompleteSearchList: tags_array,        
+        };
+        var tagsInputWithSearch = new simpleTagsInput(options);
+        tagsInput.getTags();
+    }
+})
+

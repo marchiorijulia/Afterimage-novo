@@ -69,14 +69,11 @@ async function storePost(request, response){
     });
 }
 
-async function storeTags(request, response){
-    const params = Array(
-        request.body.
-    );
+async function listTags(request, response){
 
-    const query = "INSERT INTO tags(tag_text, post_id) VALUES(?,?)";
+    const query = "SELECT * FROM tags_dominio";
 
-    connection.query(query, params, (err, results) => {
+    connection.query(query, (err, results) => {
         if(results){
             response
             .status(201)
@@ -124,5 +121,5 @@ async function getPost(request, response){
 module.exports = {
     storePost,
     getPost,
-    storeTags
+    listTags
 };

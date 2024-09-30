@@ -31,14 +31,24 @@ CHANGE
    data_publicao
    data_publicao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
-create table tags(
+create table posts_tags(
 	id int auto_increment primary key,
-    tag_text varchar(255) unique not null,
-    post_id int,
-    foreign key (post_id) references posts(id)
+    id_tag int not null,
+    id_post int not null,
+    
+    foreign key (id_post) references posts(id),
+    foreign key (id_tag) references tags_dominio(id)
 );
+drop table tags;
 
-select * from posts;
+create table tags_dominio(
+	id int auto_increment primary key,
+    tag_text varchar(25) not null
+);
+insert into tags_dominio(tag_text) values("praia"),("campo");
+select*from tags_dominio;
+
+select * from users;
 
 
 SELECT * FROM posts, users where users.id = posts.user_id
