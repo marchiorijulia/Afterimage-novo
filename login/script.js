@@ -17,7 +17,6 @@ button.onclick = async function(){
     let senha = document.getElementById('senha').value;
     let data = {email,senha}
     
-    console.log("aqui")
     const response = await fetch('http://localhost:3000/api/store/login', {
         method: 'POST',
         headers: {'Content-type': "application/json;charset=UTF-8"},
@@ -25,7 +24,7 @@ button.onclick = async function(){
     });
     
     let content = await response.json();
-    console.log(content)
+
     if(content.success){
         alert('Usuário logado.');
         localStorage.setItem('user', JSON.stringify(content.data))
