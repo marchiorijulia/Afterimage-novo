@@ -163,3 +163,7 @@ nav a:hover{
 #country{
     width: 200px;
 }
+
+.select2-selection__choice{
+    background-color: #d30707;
+}

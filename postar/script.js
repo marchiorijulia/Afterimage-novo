@@ -39,3 +39,10 @@ button.onclick = async function () {
         alert('Ocorreu um erro');
     }
 }
+
+$(".select2Tags").each(function(index, element) {
+  $(this).select2({
+    tags: true,
+    width: "100%" // just for stack-snippet to show properly
+  });
+});
