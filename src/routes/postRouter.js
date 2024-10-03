@@ -1,11 +1,9 @@
 const {Router} = require('express');
 const router = Router();
 
-const {storePost, getPost, listTags} = require('../controller/postController');
-const { listTags } = require('../controllers/tagsController');
+const {storePost, getPost} = require('../controller/postController');
 
 router.post('/store/post', storePost);
 router.get('/get/post', getPost);
-router.get('/tags/listar', listTags);
 
 module.exports = router;
