@@ -15,6 +15,14 @@ async function storeCadastro(request, response){
 
     connection.query(query, params, (err, results) => {
         if(results){
+
+            // results[0].id
+
+            // findIndex
+            // includes
+            // foreach e um if dentro
+
+            
             response
             .status(201)
             .json({

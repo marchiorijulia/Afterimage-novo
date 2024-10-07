@@ -25,20 +25,29 @@ create table posts(
     sensitive_content boolean not null
 );
 
-ALTER TABLE
-   posts
-CHANGE
-   data_publicao
-   data_publicao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
 create table tags(
 	id int auto_increment primary key,
-    tag_text varchar(255) unique not null,
-    post_id int,
-    foreign key (post_id) references posts(id)
+    text varchar(255) unique
 );
 
-select * from posts;
+create table tags_post(
+	id_post int,
+    id_tag int,
+    foreign key (id_post) references posts(id),
+    foreign key (id_tag) references tags(id)
+);
 
+/*
+insert no post > pega o id do post
+insert na tag ou se a tag já existe > pega o id da tag
+insert em tags_post
+*/
+
+ALTER TABLE
+   posts
+drop
+   tags_text;
+
+select * from posts;
 
 SELECT * FROM posts, users where users.id = posts.user_id

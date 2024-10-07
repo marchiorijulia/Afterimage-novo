@@ -1,7 +1,6 @@
 const connection = require('../config/db');
 const dotenv = require('dotenv').config();
 
-
 const fs = require('fs');
 const path = require('path');
 
@@ -12,6 +11,12 @@ if(!fs.existsSync(uploadPath)){
 }
 
 async function storePost(request, response){
+
+    
+
+
+    
+    
 
     if(!request.files){
         return response.status(400).json({
@@ -39,14 +44,34 @@ async function storePost(request, response){
             request.body.ano,
             request.body.decada,
             request.body.seculo,
-            request.body.sensitive_content == 'true' ? true : false
-            
+            request.body.country,
+            request.body.sensitive_content == 'true' ? true : false,
         )
 
-        const query = "INSERT INTO posts(user_id, titulo, descricao, img, ano, decada, seculo, sensitive_content) VALUES(?,?,?,?,?,?,?,?)";
+        const query = "INSERT INTO posts(user_id, titulo, descricao, img, ano, decada, seculo, pais, sensitive_content) VALUES(?,?,?,?,?,?,?,?,?)";
 
         connection.query(query, params, (err, results) => {
             if(results){
+                
+                const tags_array = []
+                const tags_front = request.body.tags.split(',')
+                tags_front.forEach((tag) => {
+                    let tag_array = []
+                    tag_array.push(tag)
+                    tags_array.push(tag_array)
+                })
+                console.log(tags_array)
+                
+                const query2 = "REPLACE INTO tags(text) VALUES ?"
+                
+                connection.query(query2, [tags_array], (err, results) => {
+                    if(results){
+                        console.log(results)
+                    } else {
+                        console.log(err)
+                    }
+                })
+
                 response
                 .status(201)
                 .json({
