@@ -29,11 +29,10 @@ nav {
     background-color: rgba(0, 0, 0, 0.233);
 }
 
-#logo {
-    color: var(--verde-escuro);
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration: none;
+#logo img{
+    width: 300px;
+    height: 120px;
+    margin-left: 50px;
 }
 
 nav a {

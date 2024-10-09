@@ -1,7 +1,7 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
 
-const {storeCadastro} = require('../controller/cadastroController');
+const { storeCadastro } = require('../controller/cadastroController');
 
 /**
  * @swagger
@@ -11,6 +11,14 @@ const {storeCadastro} = require('../controller/cadastroController');
  *    responses:
  *      201:
  *        description: Sucesso!
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ *      400:
+ *        description: oops!
  *        content:
  *          application/json:
  *            schema:

@@ -17,6 +17,14 @@ const {storePost, getPost} = require('../controller/postController');
  *              type: array
  *              items:
  *                type: object
+ *      400:
+ *        description: oops!
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
  */
 
 router.post('/store/post', storePost);
@@ -28,7 +36,15 @@ router.post('/store/post', storePost);
  *    summary: Exibe todos os posts
  *    responses:
  *      200:
- *        description: Lista de posts
+ *        description: Sucesso!
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ *      400:
+ *        description: oops!
  *        content:
  *          application/json:
  *            schema:
