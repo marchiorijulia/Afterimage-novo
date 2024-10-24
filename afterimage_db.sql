@@ -30,12 +30,13 @@ create table tags(
     text varchar(255) unique
 );
 
-create table tags_post(
-	id_post int,
-    id_tag int,
-    foreign key (id_post) references posts(id),
-    foreign key (id_tag) references tags(id)
-);
+-- versão anterior da tabela que linka
+-- create table tags_post(
+-- 	id_post int,
+--     id_tag int,
+--     foreign key (id_post) references posts(id),
+--     foreign key (id_tag) references tags(id)
+-- );
 
 /*
 insert no post > pega o id do post
@@ -49,5 +50,13 @@ drop
    tags_text;
 
 select * from posts;
+
+CREATE TABLE post_tags (
+    post_id INT,
+    tag_id INT,
+    PRIMARY KEY (post_id, tag_id),
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    FOREIGN KEY (tag_id) REFERENCES tags(id)
+);
 
 SELECT * FROM posts, users where users.id = posts.user_id

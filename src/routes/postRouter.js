@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 
-const {storePost, getPost} = require('../controller/postController');
+const {storePost, getPost, getTags} = require('../controller/postController');
 
 /**
  * @swagger
@@ -53,5 +53,7 @@ router.post('/store/post', storePost);
  *                type: object
  */
 router.get('/get/post', getPost);
+
+router.get('/get/tags', getTags)
 
 module.exports = router;

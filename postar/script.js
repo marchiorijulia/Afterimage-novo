@@ -55,6 +55,32 @@ $(".select2Tags").each(function(index, element) {
 });
 
 
+$(document).ready(function() {
+    $('.select2Tags').select2({
+        placeholder: "Selecione ou digite uma tag",
+        tags: true, // Permite que novas tags sejam adicionadas
+        ajax: {
+            url: '/api/get/tags', // URL do seu endpoint para buscar as tags
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    q: params.term // O termo de pesquisa digitado
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: data.map(tag => {
+                        return { id: tag.id, text: tag.text }; // Formato esperado pelo Select2
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 1 // Número mínimo de caracteres para iniciar a busca
+    });
+});
+
 // $("#tags").select2({
 //     maximumInputLength: 5
 // });
