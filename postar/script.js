@@ -58,9 +58,10 @@ $(".select2Tags").each(function(index, element) {
 $(document).ready(function() {
     $('.select2Tags').select2({
         placeholder: "Selecione ou digite uma tag",
+        language: "pt-BR",
         tags: true, // Permite que novas tags sejam adicionadas
         ajax: {
-            url: '/api/get/tags', // URL do seu endpoint para buscar as tags
+            url: 'http://localhost:3000/api/get/tags', // URL do seu endpoint para buscar as tags
             dataType: 'json',
             delay: 250,
             data: function(params) {

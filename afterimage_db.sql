@@ -38,19 +38,6 @@ create table tags(
 --     foreign key (id_tag) references tags(id)
 -- );
 
-/*
-insert no post > pega o id do post
-insert na tag ou se a tag já existe > pega o id da tag
-insert em tags_post
-*/
-
-ALTER TABLE
-   posts
-drop
-   tags_text;
-
-select * from posts;
-
 CREATE TABLE post_tags (
     post_id INT,
     tag_id INT,
