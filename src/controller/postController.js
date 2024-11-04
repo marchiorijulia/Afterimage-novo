@@ -6,7 +6,7 @@ const path = require('path');
 
 const uploadPath = path.join(__dirname, "..", "uploads");
 
-if(!fs.existsSync(uploadPath)){
+if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath);
 }
 
@@ -141,31 +141,31 @@ function linkPostTags(postId, tagIds, response) {
 
 
 
-async function getPost(request, response){
+async function getPost(request, response) {
     const query = "SELECT * FROM posts, users where users.id = posts.user_id";
 
     connection.query(query, (err, results) => {
-        if(results){
+        if (results) {
             response
-            .status(201)
-            .json({
-                success: true,
-                message: "sucesso!",
-                data: results
-            })
-        }else{
+                .status(201)
+                .json({
+                    success: true,
+                    message: "sucesso!",
+                    data: results
+                })
+        } else {
             response
-            .status(400)
-            .json({
-                success: false,
-                message: "oops!",
-                sql: err
-            })
+                .status(400)
+                .json({
+                    success: false,
+                    message: "oops!",
+                    sql: err
+                })
         }
     })
 }
 
-async function getTags(req, res){
+async function getTags(req, res) {
     const searchTerm = req.query.q;
 
     const query = "SELECT id, text FROM tags WHERE text LIKE ? LIMIT 10";
@@ -179,8 +179,26 @@ async function getTags(req, res){
     });
 };
 
+async function getTagsFromPost(req, res) {
+    //buscar uma maneira de filtrar pelo id do post, já que o id do post não está vindo no get do post
+    const query =   `SELECT t.text FROM post_tags AS pt
+                    INNER JOIN posts AS p ON p.id = pt.post_id
+                    INNER JOIN tags AS t ON t.id = pt.tag_id`;
+    //colocar o id como parâmetro após a variável query
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: false, message: 'Erro ao buscar tags' });
+        } else {
+            res.json(results);
+        }
+
+    });
+};
+
 module.exports = {
     storePost,
     getPost,
-    getTags
+    getTags,
+    getTagsFromPost
 };

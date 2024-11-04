@@ -1,19 +1,20 @@
+{/* <form id="filterForm">
+    <input type="text" id="filterTitle" placeholder="Título">
+    <input type="number" id="filterYear" placeholder="Ano">
+    <input type="text" id="filterUsername" placeholder="Username">
+    <button type="submit">Filtrar</button>
+</form>
+<div class="posts-list"></div> */}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('http://localhost:3000/api/get/post');
     const result = await response.json();
 
-    //essa parte busca as tags mas está buscando TODAS, tem que filtrar pelo ID do post
-    const responseTags = await fetch('http://localhost:3000/api/get/tags/post')
-    const tagsresult = await responseTags.json()
-    console.log(tagsresult);
-
     const postsList = document.querySelector('.posts-list');
-    console.log(result);
 
     function displayPosts(posts) {
         postsList.innerHTML = ''; // Limpa a lista atual
         posts.forEach(post => {
-            
             const card = document.createElement('div');
             card.className = 'postagem';
 
@@ -56,13 +57,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const title = document.getElementById('filterTitle').value.toLowerCase();
             const year = document.getElementById('filterYear').value;
             const username = document.getElementById('filterUsername').value.toLowerCase();
-            const pais = document.getElementById('filterCountry').value.toLowerCase();
 
             const filteredPosts = result.data.filter(post => {
                 return (!title || post.titulo.toLowerCase().includes(title)) &&
                        (!year || post.ano === Number(year)) &&
-                       (!username || post.username.toLowerCase().includes(username)) &&
-                       (!pais || post.pais.toLowerCase().includes(pais));
+                       (!username || post.username.toLowerCase().includes(username));
             });
 
             displayPosts(filteredPosts);
@@ -71,5 +70,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('Erro', result.sql);
     }
 });
-
-
