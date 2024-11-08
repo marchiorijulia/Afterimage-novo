@@ -180,21 +180,25 @@ async function getTags(req, res) {
 };
 
 async function getTagsFromPost(req, res) {
-    //buscar uma maneira de filtrar pelo id do post, já que o id do post não está vindo no get do post
-    const query =   `SELECT t.text FROM post_tags AS pt
-                    INNER JOIN posts AS p ON p.id = pt.post_id
-                    INNER JOIN tags AS t ON t.id = pt.tag_id`;
-    //colocar o id como parâmetro após a variável query
-    connection.query(query, (err, results) => {
+    const { idpost } = req.body; // Recebendo o idpost do corpo da requisição
+
+    const query = `
+        SELECT t.text, pt.post_id, pt.tag_id 
+        FROM post_tags AS pt
+        INNER JOIN posts AS p ON p.id = pt.post_id
+        INNER JOIN tags AS t ON t.id = pt.tag_id
+        WHERE pt.post_id = ?`;
+
+    connection.query(query, [idpost], (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ success: false, message: 'Erro ao buscar tags' });
         } else {
-            res.json(results);
+            res.json(results); // Envia as tags encontradas
         }
-
     });
-};
+}
+
 
 module.exports = {
     storePost,

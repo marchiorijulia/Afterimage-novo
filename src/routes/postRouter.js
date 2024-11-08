@@ -56,5 +56,5 @@ router.get('/get/post', getPost);
 
 router.get('/get/tags', getTags)
 
-router.get('/get/tags/post', getTagsFromPost)
+router.post('/get/tags/post', getTagsFromPost)
 module.exports = router;

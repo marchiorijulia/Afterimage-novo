@@ -1,19 +1,28 @@
+async function tagsPost(idpost) {
+    const responseTags = await fetch('http://localhost:3000/api/get/tags/post', {
+        method: 'POST', // Assumindo que você está enviando o ID via POST
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idpost }) // Passando o id do post no corpo da requisição
+    });
+    const tagsresult = await responseTags.json();
+    return tagsresult; // Retorna as tags para cada post
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('http://localhost:3000/api/get/post');
     const result = await response.json();
 
-    //essa parte busca as tags mas está buscando TODAS, tem que filtrar pelo ID do post
-    const responseTags = await fetch('http://localhost:3000/api/get/tags/post')
-    const tagsresult = await responseTags.json()
-    console.log(tagsresult);
-
     const postsList = document.querySelector('.posts-list');
     console.log(result);
 
-    function displayPosts(posts) {
+    let i = 1
+    async function displayPosts(posts) {
         postsList.innerHTML = ''; // Limpa a lista atual
-        posts.forEach(post => {
-            
+        for (let post of posts) {
+            // Aguarda as tags de cada post
+            const tags = await tagsPost(i);
+            console.log(tags);
+
             const card = document.createElement('div');
             card.className = 'postagem';
 
@@ -31,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ano_div.className = 'ano-div';
 
             const ano = document.createElement('p');
-            ano.textContent = post.ano || "Desconhecido"; // Default caso não tenha ano
+            ano.textContent = post.ano || "Desconhecido";
 
             const calendario = document.createElement('i');
             calendario.className = 'fa-regular fa-calendar-days';
@@ -43,8 +52,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.appendChild(username);
             card.appendChild(ano_div);
 
+            // Exemplo de como adicionar tags ao card
+            const tagsDiv = document.createElement('div');
+            tagsDiv.className = 'tags';
+            tags.forEach(tag => {
+                const tagElem = document.createElement('span');
+                tagElem.textContent = tag.text;
+                tagsDiv.appendChild(tagElem);
+            });
+            card.appendChild(tagsDiv);
+
             postsList.appendChild(card);
-        });
+            i++
+        }
     }
 
     if (result.success) {
@@ -65,11 +85,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                        (!pais || post.pais.toLowerCase().includes(pais));
             });
 
-            displayPosts(filteredPosts);
+            // Aqui você pode aplicar o filtro nas tags, por exemplo:
+            const filteredPostsWithTags = filteredPosts.filter(post => {
+                return tagsPost(post.id).then(tags => {
+                    // Aqui você pode implementar a lógica de filtro nas tags
+                    return tags.some(tag => tag.text.toLowerCase().includes('tagDesejada'));
+                });
+            });
+
+            // Exibe os posts filtrados
+            displayPosts(filteredPostsWithTags);
         });
     } else {
         console.log('Erro', result.sql);
     }
 });
-
-
