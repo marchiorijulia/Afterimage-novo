@@ -25,43 +25,41 @@ body{
 }
 
 
-/* NAVBAR */
-nav{
-    height: 14vh;
+/* NAVBAR*/
+nav {
+    height: 10vh;
     width: 100%;
     padding: 0px 20px 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--verde-claro);
-}
+  }
+  
+  #logo img{
+    width: 250px;
+    height: 100px;
+  }
 
-#logo{
-    color: var(--verde-escuro);
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-nav a{
+nav a {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     color: white;
 }
 
-nav a:hover{
+nav a:hover {
     text-decoration: underline;
     color: var(--verde-escuro);
 }
 
-.nav-links{
+.nav-links {
     display: flex;
     align-items: center;
     gap: 2vw;
 }
 
-#botao-cadastro{
+#botao-cadastro {
     width: 10vw;
     height: 7vh;
     border-radius: 10px;
@@ -71,56 +69,10 @@ nav a:hover{
     background-color: var(--verde-escuro);
 }
 
-#botao-cadastro:hover{
+#botao-cadastro:hover {
     color: white;
     text-decoration: none;
     background-color: var(--verde-active);
-}
-
-.searchbar{
-    display: flex;
-    align-items: center;
-    width: 50vw;
-    height: 7vh;
-    border-radius: 10px;
-    background-color: white;
-    position: relative;
-}
-
-.searchbar input{
-    width: 39vw;
-    height: 7vh;
-    border: none;
-    background-color: white;
-    padding-left: 20px;
-    font-style: italic;
-    outline: 0;
-    font-family: Lora;
-}
-
-#lupa-icon{
-    font-size: 18px;
-    width: 4vw;
-    position: absolute;
-    right: 0;
-    color: var(--preto);
-}
-
-.searchbar-dropdown{
-    width: 8vw;
-    height: 7vh;
-    display: flex;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--verde-escuro);
-    color: white;
-}
-
-#dropdown-chevron{
-    color: white;
-    font-size: 12px;
 }
 
 /* SECTION 1 */
@@ -159,7 +111,7 @@ nav a:hover{
 
 .section-1_1 input, .section-1_2 input{
     border: none;
-    border-radius: 30px;
+    border-radius: 5px;
     height: 9vh;
     width: 36vw;
     padding-left: 55px;
@@ -174,7 +126,7 @@ nav a:hover{
     position: absolute;
     font-size: 20px;
     color: var(--verde-escuro);
-    padding: 17px;  
+    padding: 20px;  
     min-width: 40px;
 }
 

@@ -1,9 +1,9 @@
+let perfil = document.getElementById('perfil-button')
 let user = localStorage.getItem('user')
-let btnlogin = document.getElementById('botao-login')
-let btnCadastro = document.getElementById('botao-cadastro')
 
-if(user){
-    console.log(user);
-    btnlogin.style.display = 'none';
-    btnCadastro.style.display = 'none';
+if (user) {
+    perfil.getAttribute("href");
+    perfil.setAttribute("href", `../perfil/index.html?id=${perfil.data.id}`);
+} else {
+    perfil.href = '../cadastro/index.html'
 }

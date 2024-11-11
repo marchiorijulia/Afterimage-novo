@@ -23,22 +23,21 @@ body {
 }
 
 
+/* NAVBAR*/
 nav {
-    height: 14vh;
+    height: 10vh;
     width: 100%;
     padding: 0px 20px 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--verde-claro);
-}
-
-#logo {
-    color: var(--verde-escuro);
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration: none;
-}
+  }
+  
+  #logo img{
+    width: 250px;
+    height: 100px;
+  }
 
 nav a {
     text-decoration: none;
@@ -72,52 +71,6 @@ nav a:hover {
     color: white;
     text-decoration: none;
     background-color: var(--verde-active);
-}
-
-.searchbar {
-    display: flex;
-    align-items: center;
-    width: 50vw;
-    height: 7vh;
-    border-radius: 10px;
-    background-color: white;
-    position: relative;
-}
-
-.searchbar input {
-    width: 39vw;
-    height: 7vh;
-    border: none;
-    background-color: white;
-    padding-left: 20px;
-    font-style: italic;
-    outline: 0;
-    font-family: Lora;
-}
-
-#lupa-icon {
-    font-size: 18px;
-    width: 4vw;
-    position: absolute;
-    right: 0;
-    color: var(--preto);
-}
-
-.searchbar-dropdown {
-    width: 8vw;
-    height: 7vh;
-    display: flex;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--verde-escuro);
-    color: white;
-}
-
-#dropdown-chevron {
-    color: white;
-    font-size: 12px;
 }
 
 .section-1 {

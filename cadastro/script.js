@@ -55,7 +55,7 @@ button.onclick = async function(){
 
     if(content.success){
         alert('Usuário cadastrado.')
-        window.open(_self, "../login/index.html");
+        window.location.href = `"../login/index.html"`;
     }else{
         alert('Ocorreu um erro');
     }

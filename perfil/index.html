@@ -19,28 +19,58 @@
 
 <body>
     <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa-solid fa-bars"></i>
-        </label>
-        <label class="logo">GFG</label>
-        <div class="searchbar">
-            <select name="" id="searchbar-select">
-                <option value="imagem">Imagens</option>
-                <option value="tags">Tags</option>
-                <option value="usuarios">Usuários</option>
-                <option value="colecoes">Coleções</option>
-            </select>
-            <input type="text" placeholder="Pesquise...">
-            <i class="fa-solid fa-magnifying-glass" id="lupa-icon"></i>
+        <a href="../landing page/index.html" id="logo">
+            <img src="../Images/logo afterimage white.png" alt="Logo Afterimage">
+        </a>
+        <div class="nav-links">
+            <a href="../postar/index.html">Postar</a>
+            <a id="perfil-button">Perfil</a>
+            <a id="botao-login" href="../login/index.html">Login</a>
+            <a id="botao-cadastro" href="../cadastro/index.html">Cadastre-se</a>
         </div>
-        <ul>
-            <li><a href="../postar/index.html">Postar</a></li>
-            <li><a href="../login/index.html">Login</a></li>
-            <li><a href="../cadastro/index.html">Cadastre-se</a></li>
-        </ul>
     </nav>
     <main id="main">
+        <section class="profile-header">
+        <img src="../Images/pfp placeholder.jpg" alt="" id="profile-picture">
+        <div class="profile-header-details">
+            <h1>Nome</h1>
+        <p id="username">@username</p>
+        <p id="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis congue lorem. Etiam consequat ante quis
+            quam interdum pellentesque. Cras id arcu eu ligula fermentum gravida. Morbi convallis elit non risus
+            gravida, ac pulvinar sapien molestie. Phasellus imperdiet odio in fringilla porttitor. Duis posuere, mi sit
+            amet tincidunt tincidunt, ligula orci convallis dui, a interdum justo orci et tellus. Sed suscipit sit amet
+            turpis nec lacinia.</p>
+        </div>
+        </section>
+        <hr>
+        <section class="posts-list">
+            <div class="postagem">
+                <img src="../Images/placeholder.png" alt="" class="img">
+                <h1>Título</h1>
+                <p class="username">@username</p>
+                <div class="ano-div">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <p>1940</p>
+                </div>
+            </div>
+            <div class="postagem">
+                <img src="../Images/placeholder2.png" alt="" class="img">
+                <h1>Título</h1>
+                <p class="username">@username</p>
+                <div class="ano-div">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <p>1938</p>
+                </div>
+            </div>
+            <div class="postagem">
+                <img src="../Images/placeholder3.png" alt="" class="img">
+                <h1>Título</h1>
+                <p class="username">@username</p>
+                <div class="ano-div">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <p>1910</p>
+                </div>
+            </div>
     </main>
 
     <script src="script.js"></script>

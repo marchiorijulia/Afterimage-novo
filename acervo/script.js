@@ -32,9 +32,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const titulo = document.createElement('h1');
             titulo.textContent = post.titulo;
+            titulo.className = '.postagem h1';
 
             const username = document.createElement('p');
             username.textContent = "@" + post.username;
+            username.className = 'username';
 
             const ano_div = document.createElement('div');
             ano_div.className = 'ano-div';
@@ -45,20 +47,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             const calendario = document.createElement('i');
             calendario.className = 'fa-regular fa-calendar-days';
 
-            ano_div.appendChild(calendario);
-            ano_div.appendChild(ano);
             card.appendChild(img);
             card.appendChild(titulo);
             card.appendChild(username);
             card.appendChild(ano_div);
+            ano_div.appendChild(calendario);
+            ano_div.appendChild(ano);
+
+            postsList.appendChild(card);
 
             // Exemplo de como adicionar tags ao card
             const tagsDiv = document.createElement('div');
             tagsDiv.className = 'tags';
             tags.forEach(tag => {
-                const tagElem = document.createElement('span');
-                tagElem.textContent = tag.text;
-                tagsDiv.appendChild(tagElem);
+                // const tagElem = document.createElement('span');
+                // tagElem.textContent = tag.text;
+                // tagsDiv.appendChild(tagElem);
             });
             card.appendChild(tagsDiv);
 

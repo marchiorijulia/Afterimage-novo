@@ -20,43 +20,41 @@ body{
     font-family: Lora;
 }
 
-/* NAVBAR */
-nav{
-    height: 14vh;
+/* NAVBAR*/
+nav {
+    height: 10vh;
     width: 100%;
     padding: 0px 20px 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--verde-claro);
-}
-
-#logo{
-    color: var(--verde-escuro);
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-nav a{
+  }
+  
+  #logo img{
+    width: 250px;
+    height: 100px;
+  }
+  
+nav a {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     color: white;
 }
 
-nav a:hover{
+nav a:hover {
     text-decoration: underline;
     color: var(--verde-escuro);
 }
 
-.nav-links{
+.nav-links {
     display: flex;
     align-items: center;
     gap: 2vw;
 }
 
-#botao-cadastro{
+#botao-cadastro {
     width: 10vw;
     height: 7vh;
     border-radius: 10px;
@@ -66,56 +64,10 @@ nav a:hover{
     background-color: var(--verde-escuro);
 }
 
-#botao-cadastro:hover{
+#botao-cadastro:hover {
     color: white;
     text-decoration: none;
     background-color: var(--verde-active);
-}
-
-.searchbar{
-    display: flex;
-    align-items: center;
-    width: 50vw;
-    height: 7vh;
-    border-radius: 10px;
-    background-color: white;
-    position: relative;
-}
-
-.searchbar input{
-    width: 39vw;
-    height: 7vh;
-    border: none;
-    background-color: white;
-    padding-left: 20px;
-    font-style: italic;
-    outline: 0;
-    font-family: Lora;
-}
-
-#lupa-icon{
-    font-size: 18px;
-    width: 4vw;
-    position: absolute;
-    right: 0;
-    color: var(--preto);
-}
-
-.searchbar-dropdown{
-    width: 8vw;
-    height: 7vh;
-    display: flex;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--verde-escuro);
-    color: white;
-}
-
-#dropdown-chevron{
-    color: white;
-    font-size: 12px;
 }
 
 /* SECTION 1 */
@@ -133,6 +85,7 @@ nav a:hover{
 
 .pag-inicial{
     display: flex;
+    width: fit-content;
     gap: 8px;
     text-decoration: none;
     color: var(--preto);
@@ -171,7 +124,7 @@ nav a:hover{
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 18px;
+    gap: 8px;
     padding: 22px;
     font-size: 18px;
 }
@@ -184,6 +137,7 @@ nav a:hover{
     background-color: var(--cinza);
     height: 300px;
     width: 450px;
+    margin-bottom: 12px;
     border-radius: 10px;
     object-fit: contain;
 }
@@ -212,4 +166,46 @@ nav a:hover{
 
 .ano-div i{
     color: var(--verde-claro);
+}
+
+#filterForm{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    width: fit-content;
+    height: 10vh;
+    margin-left: 5%;
+}
+
+.form-sections{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-sections input{
+    border: solid 2px var(--verde-claro);
+    height: 30px;
+    width: 200px;
+    padding-left: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--preto);
+    outline: 0;
+    font-family: Lora;
+}
+
+#submit{
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#submit i{
+    font-size: 25px;
+    color: var(--verde-escuro);
+    cursor: pointer;
 }
