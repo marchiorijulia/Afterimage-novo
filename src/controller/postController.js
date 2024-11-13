@@ -37,7 +37,7 @@ async function storePost(request, response) {
             request.body.ano,
             request.body.decada,
             request.body.seculo,
-            request.body.country,
+            request.body.pais,
             request.body.sensitive_content === 'true' ? true : false,
         ];
 
