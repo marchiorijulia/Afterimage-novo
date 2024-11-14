@@ -142,28 +142,64 @@ function linkPostTags(postId, tagIds, response) {
 
 
 async function getPost(request, response) {
-    const query = "SELECT * FROM posts, users where users.id = posts.user_id";
+    const { titulo, ano, decada, seculo, pais, tags } = request.query;
 
-    connection.query(query, (err, results) => {
-        if (results) {
-            response
-                .status(201)
-                .json({
-                    success: true,
-                    message: "sucesso!",
-                    data: results
-                })
-        } else {
-            response
-                .status(400)
-                .json({
-                    success: false,
-                    message: "oops!",
-                    sql: err
-                })
+    // A consulta inicial
+    let query = `
+        SELECT p.*, u.username
+        FROM posts p
+        JOIN users u ON u.id = p.user_id
+        LEFT JOIN post_tags pt ON pt.post_id = p.id
+        LEFT JOIN tags t ON t.id = pt.tag_id
+        WHERE 1=1
+    `;
+
+    // Adiciona filtros dinâmicos
+    const queryParams = [];
+    if (titulo) {
+        query += " AND p.titulo LIKE ?";
+        queryParams.push(`%${titulo}%`);
+    }
+    if (ano) {
+        query += " AND p.ano = ?";
+        queryParams.push(ano);
+    }
+    if (decada) {
+        query += " AND p.decada = ?";
+        queryParams.push(decada);
+    }
+    if (seculo) {
+        query += " AND p.seculo = ?";
+        queryParams.push(seculo);
+    }
+    if (pais) {
+        query += " AND p.pais LIKE ?";
+        queryParams.push(`%${pais}%`);
+    }
+    if (tags) {
+        query += " AND t.text LIKE ?";
+        queryParams.push(`%${tags}%`);
+    }
+
+    query += " GROUP BY p.id"; // Agrupar por post para evitar duplicados
+    query += " ORDER BY p.data_publicao DESC"; // Ordenar pelos mais recentes
+
+    connection.query(query, queryParams, (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao buscar posts.",
+                error: err,
+            });
         }
-    })
+
+        response.status(200).json({
+            success: true,
+            data: results,
+        });
+    });
 }
+
 
 async function getTags(req, res) {
     const searchTerm = req.query.q;

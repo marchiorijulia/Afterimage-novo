@@ -1,27 +1,35 @@
-async function tagsPost(idpost) {
-    const responseTags = await fetch('http://localhost:3000/api/get/tags/post', {
-        method: 'POST', // Assumindo que você está enviando o ID via POST
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idpost }) // Passando o id do post no corpo da requisição
-    });
-    const tagsresult = await responseTags.json();
-    return tagsresult; // Retorna as tags para cada post
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
-    const response = await fetch('http://localhost:3000/api/get/post');
-    const result = await response.json();
-
     const postsList = document.querySelector('.posts-list');
-    console.log(result);
+    const filterForm = document.getElementById('filterForm');
 
-    let i = 1
-    async function displayPosts(posts) {
-        postsList.innerHTML = ''; // Limpa a lista atual
-        for (let post of posts) {
-            // Aguarda as tags de cada post
-            const tags = await tagsPost(i);
-            console.log(tags);
+    // Função para buscar posts com os filtros
+    async function fetchFilteredPosts(filters) {
+        const sensitiveContentFilter = document.getElementById('filterSensitiveContent').checked;
+
+        // Se o filtro de conteúdo sensível estiver ativado, adiciona o parâmetro para ocultar posts sensíveis
+        if (sensitiveContentFilter) {
+            filters.sensitive_content = false; // Filtra posts com conteúdo sensível
+        }
+
+        // Faz a requisição com os filtros
+        const response = await fetch(`http://localhost:3000/api/get/post?${new URLSearchParams(filters)}`);
+        const result = await response.json();
+
+        if (result.success) {
+            displayPosts(result.data);
+        } else {
+            console.log('Erro ao buscar posts filtrados');
+        }
+    }
+
+    // Função para exibir os posts na interface
+    function displayPosts(posts) {
+        postsList.innerHTML = ''; // Limpa os posts anteriores
+        posts.forEach(post => {
+            // Se o post for marcado como sensível e o filtro estiver ativado, não exibe
+            if (post.sensitive_content && document.getElementById('filterSensitiveContent').checked) {
+                return; // Ignora este post
+            }
 
             const card = document.createElement('div');
             card.className = 'postagem';
@@ -32,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const titulo = document.createElement('h1');
             titulo.textContent = post.titulo;
-            titulo.className = '.postagem h1';
+            titulo.className = 'titulo';
 
             const username = document.createElement('p');
             username.textContent = "@" + post.username;
@@ -42,7 +50,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             ano_div.className = 'ano-div';
 
             const ano = document.createElement('p');
-            ano.textContent = post.ano || "Desconhecido";
+
+            // Lógica para exibir ano, década ou século
+            let displayDate = "Desconhecido"; // Valor padrão
+            if (post.ano) {
+                displayDate = post.ano; // Exibe o ano se disponível
+            } else if (post.decada) {
+                displayDate = `${post.decada}s`; // Exibe a década se disponível
+            } else if (post.seculo) {
+                displayDate = `${post.seculo}º Século`; // Exibe o século se disponível
+            }
+
+            ano.textContent = displayDate;
 
             const calendario = document.createElement('i');
             calendario.className = 'fa-regular fa-calendar-days';
@@ -55,52 +74,32 @@ document.addEventListener('DOMContentLoaded', async () => {
             ano_div.appendChild(ano);
 
             postsList.appendChild(card);
-
-            // Exemplo de como adicionar tags ao card
-            const tagsDiv = document.createElement('div');
-            tagsDiv.className = 'tags';
-            tags.forEach(tag => {
-                // const tagElem = document.createElement('span');
-                // tagElem.textContent = tag.text;
-                // tagsDiv.appendChild(tagElem);
-            });
-            card.appendChild(tagsDiv);
-
-            postsList.appendChild(card);
-            i++
-        }
-    }
-
-    if (result.success) {
-        displayPosts(result.data);
-
-        document.getElementById('filterForm').addEventListener('submit', (e) => {
-            e.preventDefault(); // Evita o comportamento padrão do formulário
-
-            const title = document.getElementById('filterTitle').value.toLowerCase();
-            const year = document.getElementById('filterYear').value;
-            const username = document.getElementById('filterUsername').value.toLowerCase();
-            const pais = document.getElementById('filterCountry').value.toLowerCase();
-
-            const filteredPosts = result.data.filter(post => {
-                return (!title || post.titulo.toLowerCase().includes(title)) &&
-                       (!year || post.ano === Number(year)) &&
-                       (!username || post.username.toLowerCase().includes(username)) &&
-                       (!pais || post.pais.toLowerCase().includes(pais));
-            });
-
-            // Aqui você pode aplicar o filtro nas tags, por exemplo:
-            const filteredPostsWithTags = filteredPosts.filter(post => {
-                return tagsPost(post.id).then(tags => {
-                    // Aqui você pode implementar a lógica de filtro nas tags
-                    return tags.some(tag => tag.text.toLowerCase().includes('tagDesejada'));
-                });
-            });
-
-            // Exibe os posts filtrados
-            displayPosts(filteredPostsWithTags);
         });
-    } else {
-        console.log('Erro', result.sql);
     }
+
+    // Quando o formulário de filtro for enviado
+    filterForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Previne o comportamento padrão de envio do formulário
+
+        // Captura os valores dos filtros
+        const filters = {
+            titulo: document.getElementById('filterTitle').value.toLowerCase(),
+            ano: document.getElementById('filterYear').value,
+            decada: document.getElementById('filterDecade').value,
+            seculo: document.getElementById('filterCentury').value,
+            pais: document.getElementById('filterCountry').value.toLowerCase(),
+            tags: document.getElementById('filterTags').value.toLowerCase(),
+        };
+
+        // Remove filtros vazios
+        for (const key in filters) {
+            if (!filters[key]) delete filters[key];
+        }
+
+        // Chama a função para buscar os posts filtrados
+        fetchFilteredPosts(filters);
+    });
+
+    // Inicializa a busca com todos os posts
+    fetchFilteredPosts({});
 });
