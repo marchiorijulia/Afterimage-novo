@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { storeLogin, getUserById } = require('../controller/loginController');
+const { storeLogin, getUserById, updateUser } = require('../controller/loginController');
 
 /**
  * @swagger
@@ -61,5 +61,8 @@ router.post('/store/login', storeLogin);
  */
 
 router.get('/get/users/perfil/:id', getUserById);
+
+router.put('/update/users/:id', updateUser);
+
 
 module.exports = router;

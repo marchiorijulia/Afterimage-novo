@@ -101,6 +101,9 @@ nav a:hover {
 }
 
 #username{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-size: 20px;
     color: var(--verde-escuro);
     cursor: pointer;

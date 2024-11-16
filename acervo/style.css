@@ -152,6 +152,9 @@ nav a:hover {
 }
 
 .username{
+    display: flex;
+    align-items: center;
+    gap: 3px;
     text-align: left;
     width: 99%;
     font-style: italic;

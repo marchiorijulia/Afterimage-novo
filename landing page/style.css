@@ -79,7 +79,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 150px;
+    gap: 30%;
 }
 
 .section-1-main{
@@ -116,7 +116,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 70vh;
+    height: 60vh;
     padding: 0px 40px 0px 40px;
 }
 
@@ -136,19 +136,9 @@ nav a:hover {
 }
 
 .section-2-main p{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--preto);
-}
-
-.section-2-main a{
-    font-size: 20px;
-    color: var(--verde-claro);
-    font-weight: bold;
-}
-
-.section-2-main i{
-    font-size: 10px;
 }
 
 .section-2 img{
@@ -162,7 +152,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 70vh;
+    height: 60vh;
     padding: 0px 40px 0px 40px;
     background-color: var(--verde-claro);
 }
@@ -183,7 +173,7 @@ nav a:hover {
 }
 
 .section-3-main p{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -198,7 +188,7 @@ nav a:hover {
 }
 
 .section-3 img{
-    width: 400px;
+    width: 800px;
     height: 400px;
 }
 

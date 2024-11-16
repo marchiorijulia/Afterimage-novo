@@ -100,10 +100,51 @@ async function getUserById(request, response) {
     });
 }
 
+const fs = require('fs');
+const path = require('path');
+
+const uploadPath = path.join(__dirname, "..", "uploads");
+
+if (!fs.existsSync(uploadPath)) {
+    fs.mkdirSync(uploadPath);
+}
+
+async function updateUser(request, response) {
+    const userId = request.params.id;
+    const { nome, username, email, senha, descricao } = request.body;
+    let imgNome;
+
+    // Verificar se uma nova imagem foi enviada
+    if (request.files && request.files.img) {
+        const img = request.files.img;
+        imgNome = Date.now() + path.extname(img.name);
+        img.mv(path.join(uploadPath, imgNome));
+    }
+
+    // Atualizar dados no banco
+    const query = `
+        UPDATE users SET 
+        nome = ?, username = ?, email = ?, senha = ?, descricao = ?, img = COALESCE(?, img)
+        WHERE id = ?
+    `;
+
+    const hashedPassword = senha ? await bcrypt.hash(senha, 10) : undefined;
+    const params = [nome, username, email, hashedPassword, descricao, imgNome, userId];
+
+    connection.query(query, params, (err, results) => {
+        if (err) {
+            response.status(500).json({ success: false, message: "Erro ao atualizar perfil." });
+        } else {
+            response.status(200).json({ success: true, message: "Perfil atualizado com sucesso!" });
+        }
+    });
+}
+
 
 
 
 module.exports = {
     storeLogin,
-    getUserById
+    getUserById,
+    updateUser
 };
