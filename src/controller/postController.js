@@ -146,7 +146,7 @@ async function getPost(request, response) {
 
     // A consulta inicial
     let query = `
-        SELECT p.*, u.username
+        SELECT p.*, u.username, u.instituicao
         FROM posts p
         JOIN users u ON u.id = p.user_id
         LEFT JOIN post_tags pt ON pt.post_id = p.id
@@ -201,6 +201,7 @@ async function getPost(request, response) {
 }
 
 
+
 async function getTags(req, res) {
     const searchTerm = req.query.q;
 
@@ -235,10 +236,50 @@ async function getTagsFromPost(req, res) {
     });
 }
 
+async function getPostById(request, response) {
+    const postId = request.params.id;  // Pega o ID do post a partir da URL
+
+    const query = `
+        SELECT p.*, u.username, u.instituicao, GROUP_CONCAT(t.text) AS tags
+        FROM posts p
+        JOIN users u ON u.id = p.user_id
+        LEFT JOIN post_tags pt ON pt.post_id = p.id
+        LEFT JOIN tags t ON t.id = pt.tag_id
+        WHERE p.id = ?
+        GROUP BY p.id
+    `;
+
+    connection.query(query, [postId], (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao buscar o post.",
+                error: err,
+            });
+        }
+
+        if (results.length === 0) {
+            return response.status(404).json({
+                success: false,
+                message: "Post não encontrado.",
+            });
+        }
+
+        // Envia o post com as tags associadas e o campo instituicao
+        response.status(200).json({
+            success: true,
+            data: results[0],
+            message: "Post encontrado com sucesso!",
+        });
+    });
+}
+
+
 
 module.exports = {
     storePost,
     getPost,
     getTags,
-    getTagsFromPost
+    getTagsFromPost,
+    getPostById
 };

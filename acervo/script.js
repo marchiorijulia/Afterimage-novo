@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Função para exibir os posts na interface
     function displayPosts(posts) {
+        console.log(posts)
         postsList.innerHTML = ''; // Limpa os posts anteriores
         posts.forEach(post => {
             // Se o post for marcado como sensível e o filtro estiver ativado, não exibe
@@ -33,6 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const card = document.createElement('div');
             card.className = 'postagem';
+            card.style.cursor = "pointer";
+            card.addEventListener("click", function(){
+                window.open(`../foto detalhes/index.html?id=${post.id}`, '_blank');
+            })
 
             const img = document.createElement('img');
             img.src = `http://localhost:3000/uploads/${post.img}`;
@@ -43,8 +48,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             titulo.className = 'titulo';
 
             const username = document.createElement('p');
-            username.textContent = "@" + post.username;
             username.className = 'username';
+
+            // Exibe o nome de usuário
+            username.textContent = "@" + post.username;
+
+            // Verifica se o usuário é uma instituição e adiciona o ícone
+            if (post.instituicao == 1) {
+                const checkIcon = document.createElement('i');
+                checkIcon.className = 'fa-solid fa-circle-check'; // Adiciona a classe do ícone
+                username.appendChild(checkIcon); // Adiciona o ícone ao lado do nome de usuário
+            }
 
             const ano_div = document.createElement('div');
             ano_div.className = 'ano-div';
@@ -58,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else if (post.decada) {
                 displayDate = `${post.decada}s`; // Exibe a década se disponível
             } else if (post.seculo) {
-                displayDate = `${post.seculo}º Século`; // Exibe o século se disponível
+                displayDate = `Século ${post.seculo}`; // Exibe o século se disponível
             }
 
             ano.textContent = displayDate;

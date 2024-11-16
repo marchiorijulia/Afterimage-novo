@@ -103,6 +103,7 @@ nav a:hover {
 #username{
     font-size: 20px;
     color: var(--verde-escuro);
+    cursor: pointer;
 }
 
 /* SECTION 2 */
@@ -119,6 +120,7 @@ nav a:hover {
 .section-2 img{
     width: 40%;
     height: 40%;
+    cursor: pointer;
 }
 
 .section-2-sub{

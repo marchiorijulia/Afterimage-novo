@@ -3,7 +3,6 @@ require("dotenv").config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 async function storeLogin(request, response) {
     const query = "SELECT * FROM users WHERE email = ?";
 
@@ -59,30 +58,52 @@ async function storeLogin(request, response) {
     });
 }
 
-async function getUserById(request, response){
-    const params = Array(request.params.id);
+async function getUserById(request, response) {
+    const userId = request.params.id;
 
-    const query = "SELECT * FROM users where id = ?"
+    const userQuery = "SELECT * FROM users WHERE id = ?";
+    const postsQuery = `
+        SELECT p.*, u.username 
+        FROM posts p 
+        JOIN users u ON p.user_id = u.id 
+        WHERE u.id = ? 
+        ORDER BY p.data_publicao DESC
+    `;
 
-    connection.query(query, params, (err, results) => {
-        if(results.length>0){
+    connection.query(userQuery, [userId], (err, userResults) => {
+        if (err || userResults.length === 0) {
+            return response.status(400).json({
+                success: false,
+                message: "Usuário não encontrado!",
+                sql: err,
+            });
+        }
+
+        connection.query(postsQuery, [userId], (err, postResults) => {
+            if (err) {
+                return response.status(500).json({
+                    success: false,
+                    message: "Erro ao buscar postagens do usuário.",
+                    sql: err,
+                });
+            }
+
             response.status(200).json({
                 success: true,
-                data: results[0],
-                message: "Sucesso!"
-            })
-        }else{
-            response.status(400).json({
-                success: false,
-                message: "Erro!",
-                sql: err
-            })
-        }
-    })
-
+                data: {
+                    user: userResults[0],
+                    posts: postResults,
+                },
+                message: "Dados recuperados com sucesso!",
+            });
+        });
+    });
 }
+
+
+
 
 module.exports = {
     storeLogin,
     getUserById
-}
+};

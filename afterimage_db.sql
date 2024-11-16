@@ -10,6 +10,9 @@ create table users(
     instituicao boolean not null
 );
 
+ALTER TABLE users
+ADD descricao varchar(500);
+
 create table posts(
 	id int auto_increment primary key,
     user_id int,
@@ -25,18 +28,16 @@ create table posts(
     sensitive_content boolean not null
 );
 
+alter table posts
+modify column data_publicao DATETIME DEFAULT(CURRENT_TIMESTAMP());
+
+ALTER TABLE posts
+modify COLUMN descricao varchar(500);
+
 create table tags(
 	id int auto_increment primary key,
     text varchar(255) unique
 );
-
--- versão anterior da tabela que linka
--- create table tags_post(
--- 	id_post int,
---     id_tag int,
---     foreign key (id_post) references posts(id),
---     foreign key (id_tag) references tags(id)
--- );
 
 CREATE TABLE post_tags (
     post_id INT,
@@ -46,4 +47,4 @@ CREATE TABLE post_tags (
     FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
 
-SELECT * FROM posts, users where users.id = posts.user_id
+SELECT * FROM users;

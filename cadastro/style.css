@@ -112,7 +112,7 @@ nav a:hover {
 .section-1_1 input, .section-1_2 input{
     border: none;
     border-radius: 5px;
-    height: 9vh;
+    height: 60px;
     width: 36vw;
     padding-left: 55px;
     font-style: italic;
@@ -123,11 +123,11 @@ nav a:hover {
 }
 
 .input-icon .fa-regular, .fa-solid{
-    position: absolute;
-    font-size: 20px;
-    color: var(--verde-escuro);
-    padding: 20px;  
-    min-width: 40px;
+  position: absolute;
+  font-size: 20px;
+  color: var(--verde-escuro);
+  padding: 20px;
+  min-width: 40px;
 }
 
 #eye-icon, #eye-icon-confirm{

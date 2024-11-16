@@ -54,8 +54,8 @@ button.onclick = async function(){
     let content = await response.json();
 
     if(content.success){
-        alert('Usuário cadastrado.')
-        window.location.href = `"../login/index.html"`;
+        alert('Usuário cadastrado.');
+        window.location.href = '../login/index.html';
     }else{
         alert('Ocorreu um erro');
     }
