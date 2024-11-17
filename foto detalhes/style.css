@@ -39,6 +39,10 @@ nav {
     height: 100px;
   }
 
+  #logo-mini img {
+    display: none;
+  }
+
 nav a {
     text-decoration: none;
     font-size: 18px;
@@ -177,4 +181,172 @@ nav a:hover {
 
 #timestamp{
     font-size: 20px;
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media screen and (min-width: 360px) and (max-width: 414px) {
+
+    /* NAVBAR*/
+    nav {
+        height: 10vh;
+        width: 100%;
+        padding-right: 18%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--verde-claro);
+    }
+  
+    #logo img {
+        display: none;
+    }
+  
+    #logo-mini img {
+        width: 80px;
+        height: 70px;
+        display: block;
+    }
+  
+    nav a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+    }
+  
+    nav a:hover {
+        text-decoration: underline;
+        color: var(--verde-escuro);
+    }
+  
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2vw;
+    }
+  
+    #botao-cadastro {
+        width: 30vw;
+        height: 5vh;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--verde-escuro);
+    }
+  
+    #botao-cadastro:hover {
+        color: white;
+        text-decoration: none;
+        background-color: var(--verde-active);
+    }
+
+    /* SECTION 1 */
+
+.section-1{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px 0px 50px;
+    gap: 20px;
+}
+
+.section-1 h2{
+    font-size: 22px;
+    color: var(--preto);
+}
+
+.pag-inicial{
+    display: flex;
+    width: fit-content;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--preto);
+}
+
+.pag-inicial i{
+    color: var(--verde-escuro);
+    font-size: 20px;
+}
+
+#username{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+    color: var(--verde-escuro);
+    cursor: pointer;
+}
+
+/* SECTION 2 */
+
+.section-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8vh;
+    height: 100%;
+    color: var(--preto);
+}
+
+.section-2 img{
+    margin-top: 20px;
+    width: 90%;
+    height: 90%;
+    cursor: pointer;
+}
+
+.section-2-sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* padding: 0px 0px 5vh 10vw; */
+    padding: 2%;
+    border-radius: 20px;
+    margin-bottom: 5vh;
+    width: 90%;
+    height: fit-content;
+    gap: 2vh;
+    background-color: var(--verde-claro);
+}
+
+.informacoes{
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    gap: 5px;
+}
+
+#desc-div{
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.all-tags-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.tag-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--verde-escuro);
+    width: fit-content;
+    padding: 2px 4px 2px 4px;
+    gap: 5px;
+    border-radius: 3px;
+    font-size: 18px;
+}
+
+.tag-div i, .tag-div p{
+    color: white;
+}
+
+#timestamp{
+    font-size: 20px;
+}
+
+
 }

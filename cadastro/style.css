@@ -41,6 +41,10 @@ nav {
     height: 100px;
   }
 
+  #logo-mini img {
+    display: none;
+  }
+
 nav a {
     text-decoration: none;
     font-size: 18px;
@@ -269,21 +273,93 @@ nav a:hover {
 
 
 
-/* RESPONSIVIDADE DESKTOP */
-@media screen and (min-width: 1280px) and (max-width: 1920px){
-
-}
-
 /* RESPONSIVIDADE MOBILE */
-@media screen and (min-width: 360px) and (max-width: 414px){
+@media screen and (min-width: 360px) and (max-width: 414px) {
+
+  /* NAVBAR*/
+  nav {
+      height: 10vh;
+      width: 100%;
+      padding-right: 18%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--verde-claro);
+  }
+
+  #logo img {
+      display: none;
+  }
+
+  #logo-mini img {
+      width: 80px;
+      height: 70px;
+      display: block;
+  }
+
+  nav a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+  }
+
+  nav a:hover {
+      text-decoration: underline;
+      color: var(--verde-escuro);
+  }
+
+  .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2vw;
+  }
+
+  #botao-cadastro {
+      width: 30vw;
+      height: 5vh;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--verde-escuro);
+  }
+
+  #botao-cadastro:hover {
+      color: white;
+      text-decoration: none;
+      background-color: var(--verde-active);
+  }
+
+  .section-1{
+    height: 800px;
+    margin-bottom: 20px;
+  }
 
 
+  .section-1_inputs{
+    flex-direction: column;
+    height: 70%;
+  }
+
+  .section-1_1{
+    width: 98%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .section-1_2{
+    width: 98%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .section-1_1 input, .section-1_2 input{
+    width: 100%;
+  }
+
+  .section-1 button{
+    width: 280px;
+  }
 }
-
-/* RESPONSIVIDADE TABLET */
-@media screen and (min-width: 601px) and (max-width: 1280px){
-
-
-}
-
 

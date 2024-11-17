@@ -9,29 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const botaoPostar = document.getElementById('botao-postar');
 
     if (loggedUser) {
-        // Remover botões de login e cadastro
         botaoLogin.style.display = 'none';
         botaoCadastro.style.display = 'none';
 
-        // Mostrar botão de perfil e redirecionar ao perfil do usuário logado
         botaoPerfil.classList.remove('hidden');
         botaoPerfil.href = `../perfil/index.html?id=${loggedUser.id}`;
 
-        // Mostrar o botão de logout
         botaoLogout.classList.remove('hidden');
 
-        // Adicionar funcionalidade ao botão de logout
         botaoLogout.addEventListener('click', function () {
             localStorage.removeItem('user');
             alert('Você saiu da conta.');
             window.location.href = '../landing page/index.html';
         });
     } else {
-        // Ocultar o botão de perfil e mostrar botões de login e cadastro
         botaoPerfil.style.display = 'none';
         botaoLogout.style.display = 'none';
-
-        // Redirecionar o botão de postar para a página de login se não estiver logado
         botaoPostar.href = '../login/index.html';
     }
 });
@@ -48,11 +41,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Se o filtro de conteúdo sensível estiver ativado, adiciona o parâmetro para ocultar posts sensíveis
         if (sensitiveContentFilter) {
-            filters.sensitive_content = false; // Filtra posts com conteúdo sensível
+            filters.sensitive_content = false; 
         }
 
         // Faz a requisição com os filtros
-        const response = await fetch(`http://localhost:3000/api/get/post?${new URLSearchParams(filters)}`);
+        const response = await fetch(`http://localhost:3000/api/get/post?${new URLSearchParams(filters)}`); // URLSearchParams: Automaticamente converte esse objeto em uma string de parâmetros de consulta no formato esperado por uma url
         const result = await response.json();
 
         if (result.success) {
@@ -69,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         posts.forEach(post => {
             // Se o post for marcado como sensível e o filtro estiver ativado, não exibe
             if (post.sensitive_content && document.getElementById('filterSensitiveContent').checked) {
-                return; // Ignora este post
+                return; // Ignora esse post
             }
 
             const card = document.createElement('div');
@@ -90,14 +83,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const username = document.createElement('p');
             username.className = 'username';
 
-            // Exibe o nome de usuário
             username.textContent = "@" + post.username;
 
             // Verifica se o usuário é uma instituição e adiciona o ícone
             if (post.instituicao == 1) {
                 const checkIcon = document.createElement('i');
-                checkIcon.className = 'fa-solid fa-circle-check'; // Adiciona a classe do ícone
-                username.appendChild(checkIcon); // Adiciona o ícone ao lado do nome de usuário
+                checkIcon.className = 'fa-solid fa-circle-check'; 
+                username.appendChild(checkIcon); 
             }
 
             const ano_div = document.createElement('div');
@@ -108,11 +100,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Lógica para exibir ano, década ou século
             let displayDate = "Desconhecido"; // Valor padrão
             if (post.ano) {
-                displayDate = post.ano; // Exibe o ano se disponível
+                displayDate = post.ano; 
             } else if (post.decada) {
-                displayDate = `${post.decada}s`; // Exibe a década se disponível
+                displayDate = `${post.decada}s`; 
             } else if (post.seculo) {
-                displayDate = `Século ${post.seculo}`; // Exibe o século se disponível
+                displayDate = `Século ${post.seculo}`; 
             }
 
             ano.textContent = displayDate;
@@ -135,7 +127,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     filterForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Previne o comportamento padrão de envio do formulário
 
-        // Captura os valores dos filtros
         const filters = {
             titulo: document.getElementById('filterTitle').value.toLowerCase(),
             ano: document.getElementById('filterYear').value,
@@ -147,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Remove filtros vazios
         for (const key in filters) {
-            if (!filters[key]) delete filters[key];
+            if (!filters[key]) delete filters[key]; // O ! inverte a avaliação; assim, !filters[key] será true se o valor associado à chave for falso
         }
 
         // Chama a função para buscar os posts filtrados

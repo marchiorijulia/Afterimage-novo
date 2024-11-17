@@ -9,29 +9,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const botaoPostar = document.getElementById('botao-postar');
 
     if (loggedUser) {
-        // Remover botões de login e cadastro
         botaoLogin.style.display = 'none';
         botaoCadastro.style.display = 'none';
 
-        // Mostrar botão de perfil e redirecionar ao perfil do usuário logado
         botaoPerfil.classList.remove('hidden');
         botaoPerfil.href = `../perfil/index.html?id=${loggedUser.id}`;
 
-        // Mostrar o botão de logout
         botaoLogout.classList.remove('hidden');
 
-        // Adicionar funcionalidade ao botão de logout
         botaoLogout.addEventListener('click', function () {
             localStorage.removeItem('user');
             alert('Você saiu da conta.');
             window.location.href = '../landing page/index.html';
         });
     } else {
-        // Ocultar o botão de perfil e mostrar botões de login e cadastro
         botaoPerfil.style.display = 'none';
         botaoLogout.style.display = 'none';
 
-        // Redirecionar o botão de postar para a página de login se não estiver logado
         botaoPostar.href = '../login/index.html';
     }
 });
@@ -42,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const perfilId = urlParams.get("id");
 
-    // Verificar se o usuário está logado
+    // Verifica se o usuário está logado
     const loggedUser = JSON.parse(localStorage.getItem('user'));
 
     if (perfilId) {
@@ -59,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Verificar se o perfil visualizado pertence ao usuário logado
                     const isUserLoggedIn = loggedUser && loggedUser.id === user.id;
 
-                    // Cabeçalho do perfil com ícone de edição condicional
+                    // Profile header com ícone de edição condicional
                     const profileHeader = `
                         <section class="profile-header">
                             <img src="${profilePictureSrc}" alt="Foto do perfil" id="profile-picture">
@@ -105,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     perfilMain.innerHTML = profileHeader;
 
-                    // Renderizar postagens
+                    // Criar as postagens
                     const postsList = perfilMain.querySelector('.posts-list');
                     if (posts.length > 0) {
                         posts.forEach(post => {

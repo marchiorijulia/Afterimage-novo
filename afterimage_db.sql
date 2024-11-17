@@ -47,4 +47,4 @@ CREATE TABLE post_tags (
     FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
 
-SELECT * FROM users;
+SELECT * FROM posts;

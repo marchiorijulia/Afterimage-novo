@@ -9,29 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const botaoPostar = document.getElementById('botao-postar');
 
     if (loggedUser) {
-        // Remover botões de login e cadastro
         botaoLogin.style.display = 'none';
         botaoCadastro.style.display = 'none';
 
-        // Mostrar botão de perfil e redirecionar ao perfil do usuário logado
         botaoPerfil.classList.remove('hidden');
         botaoPerfil.href = `../perfil/index.html?id=${loggedUser.id}`;
 
-        // Mostrar o botão de logout
         botaoLogout.classList.remove('hidden');
 
-        // Adicionar funcionalidade ao botão de logout
         botaoLogout.addEventListener('click', function () {
             localStorage.removeItem('user');
             alert('Você saiu da conta.');
             window.location.href = '../landing page/index.html';
         });
     } else {
-        // Ocultar o botão de perfil e mostrar botões de login e cadastro
         botaoPerfil.style.display = 'none';
         botaoLogout.style.display = 'none';
-
-        // Redirecionar o botão de postar para a página de login se não estiver logado
         botaoPostar.href = '../login/index.html';
     }
 });
@@ -52,11 +45,9 @@ function preencherDecadaESeculo(ano) {
         return;
     }
 
-    // Calculando a década
     let decada = Math.floor(ano / 10) * 10;
     decade.value = decada;
 
-    // Calculando o século
     let seculo = Math.ceil(ano / 100);
     century.value = seculo === 19 ? "19" : (seculo === 20 ? "20" : "00");
 }
@@ -66,7 +57,6 @@ year.addEventListener('change', function () {
     let anoSelecionado = year.value;
 
     if (anoSelecionado !== "00") {
-        // Preenche a década e o século com base no ano selecionado
         preencherDecadaESeculo(parseInt(anoSelecionado));
     }
 });
@@ -76,14 +66,12 @@ decade.addEventListener('change', function () {
     let decadaSelecionada = decade.value;
 
     if (decadaSelecionada !== "00" && year.value === "00") {
-        // Calcula o século com base na década selecionada
         let anoDecada = parseInt(decadaSelecionada);
         let seculo = Math.floor(anoDecada / 100) + 1;
         century.value = seculo === 19 ? "19" : (seculo === 20 ? "20" : "00");
     }
 });
 
-// Populando o select de anos
 for (let i = 1822; i <= 1999; i++) {
     const opt = document.createElement('option');
     opt.value = i;
@@ -91,7 +79,6 @@ for (let i = 1822; i <= 1999; i++) {
     year.appendChild(opt);
 }
 
-// Populando o select de décadas
 for (let i = 1820; i <= 1990; i++) {
     if (i % 10 == 0) {
         const opt = document.createElement('option');
@@ -132,9 +119,11 @@ button.onclick = async function () {
 $(".select2Tags").each(function(index, element) {
   $(this).select2({
     tags: true,
-    width: "100%" // just for stack-snippet to show properly
+    width: "100%" 
   });
 });
+
+$(".select2Tags").select2({ width: '20%' });      
 
 
 $(document).ready(function() {
@@ -143,7 +132,7 @@ $(document).ready(function() {
         language: "pt-BR",
         tags: true, // Permite que novas tags sejam adicionadas
         ajax: {
-            url: 'http://localhost:3000/api/get/tags', // URL do seu endpoint para buscar as tags
+            url: 'http://localhost:3000/api/get/tags', // url do endpoint para buscar as tags
             dataType: 'json',
             delay: 250,
             data: function(params) {

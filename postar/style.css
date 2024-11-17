@@ -41,6 +41,10 @@ nav {
     height: 100px;
   }
 
+  #logo-mini img {
+    display: none;
+}
+
 nav a {
     text-decoration: none;
     font-size: 18px;
@@ -173,4 +177,176 @@ nav a:hover {
 
 #submit:active{
     transform: translateY(5px);
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media screen and (min-width: 360px) and (max-width: 414px) {
+
+    /* NAVBAR*/
+    nav {
+        height: 10vh;
+        width: 100%;
+        padding-right: 18%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--verde-claro);
+    }
+
+    #logo img {
+        display: none;
+    }
+
+    #logo-mini img {
+        width: 80px;
+        height: 70px;
+        display: block;
+    }
+
+    nav a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+        color: var(--verde-escuro);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2vw;
+    }
+
+    #botao-cadastro {
+        width: 30vw;
+        height: 5vh;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--verde-escuro);
+    }
+
+    #botao-cadastro:hover {
+        color: white;
+        text-decoration: none;
+        background-color: var(--verde-active);
+    }
+
+    body{
+        justify-content: space-between;
+    }
+
+    /* FORMULARIO  */
+
+
+#formulario{
+    background-color: var(--verde-claro);
+    border-radius: 10px;
+    width: 90%;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#formulario label{
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.formulario-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 95%;
+}
+
+#descricao{
+    height: 90px;
+    padding: 5px;
+}
+
+.formulario-2{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.datas{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.datas select{
+    width: 100%;
+}
+
+#pais{
+    width: 200px;
+}
+
+.select2-selection__choice{
+    background-color: #d30707;
+}
+
+#titulo{
+    border: none;
+    border-radius: 5px;
+    height: 7vh;
+    width: 100%;
+    padding-left: 20px;
+    font-style: italic;
+    color: var(--cinza-escuro);
+    outline: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.321);
+    font-family: Lora;
+}
+
+#descricao{
+    border: none;
+    border-radius: 5px;
+    height: 20vh;
+    width: 100%;
+    padding-left: 20px;
+    font-style: italic;
+    color: var(--cinza-escuro);
+    outline: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.321);
+    font-family: Lora;
+}
+
+#formulario select{
+    border: none;
+    border-radius: 5px;
+    font-style: italic;
+    color: var(--preto);
+    outline: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.321);
+    font-family: Lora;
+}
+
+#submit{
+    font-size: 30px;
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 90%;
+    color: white;
+    background-color: var(--verde-active);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
+    font-family: Lora;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
 }

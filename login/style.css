@@ -39,6 +39,10 @@ nav {
     height: 100px;
   }
 
+  #logo-mini img {
+    display: none;
+  }
+
 nav a {
     text-decoration: none;
     font-size: 18px;
@@ -190,9 +194,87 @@ nav a:hover {
     text-decoration: underline;
 }
 
-#esqueceu-senha {
-    text-decoration: none;
-    color: var(--preto);
-    width: 400px;
-    text-align: right;
+
+/* RESPONSIVIDADE MOBILE */
+@media screen and (min-width: 360px) and (max-width: 414px) {
+
+    /* NAVBAR*/
+    nav {
+        height: 10vh;
+        width: 100%;
+        padding-right: 18%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--verde-claro);
+    }
+  
+    #logo img {
+        display: none;
+    }
+  
+    #logo-mini img {
+        width: 80px;
+        height: 70px;
+        display: block;
+    }
+  
+    nav a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+    }
+  
+    nav a:hover {
+        text-decoration: underline;
+        color: var(--verde-escuro);
+    }
+  
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2vw;
+    }
+  
+    #botao-cadastro {
+        width: 30vw;
+        height: 5vh;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--verde-escuro);
+    }
+  
+    #botao-cadastro:hover {
+        color: white;
+        text-decoration: none;
+        background-color: var(--verde-active);
+    }
+
+    .section-1_1{
+        display: none;
+    }
+
+    .section-1_2{
+        width: 95%;
+        height: 95%;
+    }
+
+    .section-1_2 input {
+        border: none;
+        border-radius: 30px;
+        height: 60px;
+        width: 300px;
+        padding-left: 55px;
+        font-style: italic;
+        color: var(--cinza-escuro);
+        outline: 0;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.321);
+    }
+
+    .section-1 button {
+        width: 300px;
+    }
 }
